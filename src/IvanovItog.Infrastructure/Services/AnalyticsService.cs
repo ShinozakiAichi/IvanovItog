@@ -9,6 +9,7 @@ namespace IvanovItog.Infrastructure.Services;
 public class AnalyticsService : IAnalyticsService
 {
     private readonly AppDbContext _dbContext;
+    private const string UnknownStatusName = "Не задан";
 
     public AnalyticsService(AppDbContext dbContext)
     {
@@ -20,14 +21,26 @@ public class AnalyticsService : IAnalyticsService
         NormalizeRange(ref from, ref to);
 
         var statuses = await _dbContext.Requests
+            .AsNoTracking()
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
-            .Include(r => r.Status)
-            .GroupBy(r => r.Status != null ? r.Status.Name : "Не задан")
-            .Select(g => new RequestsByStatusDto
+            .GroupBy(r => r.StatusId)
+            .Select(group => new
             {
-                Status = g.Key,
-                Count = g.Count()
+                group.Key,
+                Count = group.Count()
             })
+            .GroupJoin(
+                _dbContext.Statuses.AsNoTracking(),
+                group => group.Key,
+                status => status.Id,
+                (group, statuses) => new { group, statuses })
+            .SelectMany(
+                x => x.statuses.DefaultIfEmpty(),
+                (x, status) => new RequestsByStatusDto
+                {
+                    Status = status != null ? status.Name : UnknownStatusName,
+                    Count = x.group.Count
+                })
             .OrderBy(dto => dto.Status)
             .ToListAsync(cancellationToken);
 
@@ -39,6 +52,7 @@ public class AnalyticsService : IAnalyticsService
         NormalizeRange(ref from, ref to);
 
         var timelineAggregates = await _dbContext.Requests
+            .AsNoTracking()
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
             .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month, r.CreatedAt.Day })
             .Select(g => new
@@ -67,17 +81,20 @@ public class AnalyticsService : IAnalyticsService
         NormalizeRange(ref from, ref to);
 
         var technicians = await _dbContext.Users
+            .AsNoTracking()
             .Where(u => u.Role == Role.Tech)
             .Select(u => new { u.Id, u.DisplayName })
             .ToListAsync(cancellationToken);
 
         var activeLookup = await _dbContext.Requests
+            .AsNoTracking()
             .Where(r => r.AssignedToId != null && r.CreatedAt >= from && r.CreatedAt <= to && r.ClosedAt == null)
             .GroupBy(r => r.AssignedToId!.Value)
             .Select(g => new { TechnicianId = g.Key, Active = g.Count() })
             .ToDictionaryAsync(x => x.TechnicianId, x => x.Active, cancellationToken);
 
         var closedLookup = await _dbContext.Requests
+            .AsNoTracking()
             .Where(r => r.AssignedToId != null && r.CreatedAt >= from && r.CreatedAt <= to && r.ClosedAt != null)
             .GroupBy(r => r.AssignedToId!.Value)
             .Select(g => new { TechnicianId = g.Key, Closed = g.Count() })
