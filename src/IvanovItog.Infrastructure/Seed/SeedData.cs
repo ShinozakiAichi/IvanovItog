@@ -19,14 +19,7 @@ public static class SeedData
 
     public static async Task InitializeAsync(AppDbContext context, CancellationToken ct = default)
     {
-        try
-        {
-            await context.Database.MigrateAsync(ct);
-        }
-        catch
-        {
-            await context.Database.EnsureCreatedAsync(ct);
-        }
+        await context.Database.EnsureCreatedAsync(ct);
 
         if (!await context.Categories.AnyAsync(ct))
         {
