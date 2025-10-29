@@ -96,6 +96,14 @@
                                      Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
                                      ToolTip="Поиск по названию или описанию" />
                         </StackPanel>
+                        <StackPanel Width="220"
+                                    Visibility="{Binding IsTechnician, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <TextBlock Text="Фильтр для техника" />
+                            <ComboBox Margin="0,6,0,0"
+                                      ItemsSource="{Binding TechnicianScopes}"
+                                      DisplayMemberPath="Title"
+                                      SelectedItem="{Binding SelectedTechnicianScope}" />
+                        </StackPanel>
                     </WrapPanel>
                 </StackPanel>
             </Border>

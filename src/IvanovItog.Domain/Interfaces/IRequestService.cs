@@ -21,5 +21,8 @@ public record RequestFilter(
     Priority? Priority,
     DateTime? CreatedFrom,
     DateTime? CreatedTo,
-    string? Search
+    string? Search,
+    int? CreatedById,
+    int? AssignedToId,
+    bool IncludeUnassigned
 );

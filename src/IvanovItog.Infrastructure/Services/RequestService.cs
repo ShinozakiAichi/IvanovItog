@@ -92,6 +92,28 @@ public class RequestService : IRequestService
             query = query.Where(r => EF.Functions.Like(r.Title, pattern) || EF.Functions.Like(r.Description, pattern));
         }
 
+        if (filter.CreatedById.HasValue)
+        {
+            query = query.Where(r => r.CreatedById == filter.CreatedById.Value);
+        }
+
+        if (filter.AssignedToId.HasValue)
+        {
+            var technicianId = filter.AssignedToId.Value;
+            if (filter.IncludeUnassigned)
+            {
+                query = query.Where(r => r.AssignedToId == technicianId || r.AssignedToId == null);
+            }
+            else
+            {
+                query = query.Where(r => r.AssignedToId == technicianId);
+            }
+        }
+        else if (filter.IncludeUnassigned)
+        {
+            query = query.Where(r => r.AssignedToId == null);
+        }
+
         var requests = await query
             .OrderByDescending(r => r.CreatedAt)
             .ToListAsync(cancellationToken);

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Enums;
@@ -9,8 +10,6 @@ namespace IvanovItog.Infrastructure.Services;
 
 public class RatingService : IRatingService
 {
-    private static readonly TimeSpan ResolutionTarget = TimeSpan.FromDays(3);
-
     private readonly AppDbContext _dbContext;
     private readonly ILogger _logger;
 
@@ -36,7 +35,7 @@ public class RatingService : IRatingService
                 .ToListAsync(cancellationToken);
 
             var closedCount = closedRequests.Count();
-            var overdueCount = closedRequests.Count(r => r.ClosedAt!.Value - r.CreatedAt > ResolutionTarget);
+            var overdueCount = closedRequests.Count(r => r.ClosedAt!.Value - r.CreatedAt > GetResolutionTarget(r.Priority));
             var highPriorityCount = closedRequests.Count(r => r.Priority == Priority.High);
             var score = (closedCount * 10) - (overdueCount * 5) + (highPriorityCount * 4);
             ratings.Add(new TechnicianRatingDto(tech.Id, tech.DisplayName, closedCount, overdueCount, highPriorityCount, score));
@@ -53,4 +52,12 @@ public class RatingService : IRatingService
         var ratings = await GetRatingsAsync(cancellationToken);
         return ratings.SingleOrDefault(r => r.TechnicianId == technicianId);
     }
+
+    private static TimeSpan GetResolutionTarget(Priority priority) => priority switch
+    {
+        Priority.Low => TimeSpan.FromDays(14),
+        Priority.Medium => TimeSpan.FromDays(9),
+        Priority.High => TimeSpan.FromDays(5),
+        _ => TimeSpan.FromDays(9)
+    };
 }
