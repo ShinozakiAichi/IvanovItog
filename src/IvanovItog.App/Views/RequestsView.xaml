@@ -1,7 +1,7 @@
 <Window x:Class="IvanovItog.App.Views.RequestsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:props="clr-namespace:IvanovItog.App.Properties"
+        xmlns:props="clr-namespace:IvanovItog.App.Properties;assembly=IvanovItog.App"
         Title="{x:Static props:Resources.Requests_Title}"
         Height="600"
         Width="900"
