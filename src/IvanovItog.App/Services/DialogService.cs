@@ -11,4 +11,7 @@ public class DialogService
 
     public void ShowError(string message, string caption = "Ошибка") =>
         MessageBox.Show(message, caption, MessageBoxButton.OK, MessageBoxImage.Error);
+
+    public bool Confirm(string message, string caption = "Подтверждение") =>
+        MessageBox.Show(message, caption, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes;
 }

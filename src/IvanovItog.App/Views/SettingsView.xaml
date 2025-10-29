@@ -3,65 +3,128 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Settings_Title}"
-        Height="340"
-        Width="520"
-        MinHeight="320"
-        MinWidth="480"
-        MaxHeight="480"
-        MaxWidth="680"
+        Height="460"
+        Width="560"
+        MinHeight="420"
+        MinWidth="520"
+        MaxHeight="620"
+        MaxWidth="720"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
     <Border Margin="24"
             Padding="24"
-            CornerRadius="10"
+            CornerRadius="12"
             BorderBrush="#FFD0D7E2"
             BorderThickness="1"
             Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Тема"
-                       VerticalAlignment="Center"
-                       Margin="0,0,16,0" />
-            <ComboBox Grid.Column="1"
-                      Width="200"
-                      ItemsSource="{Binding Themes}"
-                      SelectedItem="{Binding SelectedTheme}" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Общие настройки"
+                           FontSize="18"
+                           FontWeight="SemiBold" />
+                <Grid Margin="0,16,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Тема"
+                               VerticalAlignment="Center"
+                               Margin="0,0,16,0" />
+                    <ComboBox Grid.Column="1"
+                              Width="220"
+                              ItemsSource="{Binding Themes}"
+                              SelectedItem="{Binding SelectedTheme}" />
 
-            <TextBlock Grid.Row="1"
-                       Text="Путь для вложений"
-                       VerticalAlignment="Center"
-                       Margin="0,16,16,0" />
-            <TextBox Grid.Row="1"
-                     Grid.Column="1"
-                     Margin="0,16,0,0"
-                     Text="{Binding AttachmentsPath}"
-                     MinHeight="32" />
+                    <TextBlock Grid.Row="1"
+                               Text="Путь для вложений"
+                               VerticalAlignment="Center"
+                               Margin="0,16,16,0" />
+                    <TextBox Grid.Row="1"
+                             Grid.Column="1"
+                             Margin="0,16,0,0"
+                             Text="{Binding AttachmentsPath}"
+                             MinHeight="32" />
 
-            <CheckBox Grid.Row="2"
-                      Grid.ColumnSpan="2"
-                      Margin="0,16,0,0"
-                      Content="Включить уведомления"
-                      IsChecked="{Binding NotificationsEnabled}" />
+                    <CheckBox Grid.Row="2"
+                              Grid.ColumnSpan="2"
+                              Margin="0,16,0,0"
+                              Content="Включить уведомления"
+                              IsChecked="{Binding NotificationsEnabled}" />
+                </Grid>
 
-            <StackPanel Grid.Row="3"
-                        Grid.ColumnSpan="2"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        Margin="0,24,0,0">
-                <Button Content="Сохранить"
-                        Width="140"
-                        Height="36"
-                        Command="{Binding SaveCommand}" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,20,0,0">
+                    <Button Content="Сохранить"
+                            Width="160"
+                            Height="38"
+                            Command="{Binding SaveCommand}" />
+                </StackPanel>
+
+                <Separator Margin="0,24,0,24" />
+
+                <TextBlock Text="Смена пароля"
+                           FontSize="18"
+                           FontWeight="SemiBold" />
+                <Grid Margin="0,16,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Текущий пароль"
+                               Margin="0,0,16,0"
+                               VerticalAlignment="Center" />
+                    <PasswordBox x:Name="CurrentPasswordBox"
+                                 Grid.Column="1"
+                                 MinHeight="32"
+                                 PasswordChanged="OnCurrentPasswordChanged" />
+
+                    <TextBlock Grid.Row="1"
+                               Text="Новый пароль"
+                               Margin="0,16,16,0"
+                               VerticalAlignment="Center" />
+                    <PasswordBox x:Name="NewPasswordBox"
+                                 Grid.Row="1"
+                                 Grid.Column="1"
+                                 Margin="0,16,0,0"
+                                 MinHeight="32"
+                                 PasswordChanged="OnNewPasswordChanged" />
+
+                    <TextBlock Grid.Row="2"
+                               Text="Повторите пароль"
+                               Margin="0,16,16,0"
+                               VerticalAlignment="Center" />
+                    <PasswordBox x:Name="ConfirmPasswordBox"
+                                 Grid.Row="2"
+                                 Grid.Column="1"
+                                 Margin="0,16,0,0"
+                                 MinHeight="32"
+                                 PasswordChanged="OnConfirmPasswordChanged" />
+
+                    <StackPanel Grid.Row="3"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,20,0,0">
+                        <Button Content="Изменить пароль"
+                                Width="180"
+                                Height="38"
+                                Command="{Binding ChangePasswordCommand}" />
+                    </StackPanel>
+                </Grid>
             </StackPanel>
-        </Grid>
+        </ScrollViewer>
     </Border>
 </Window>
