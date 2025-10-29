@@ -11,6 +11,7 @@ using IvanovItog.Domain.Enums;
 using IvanovItog.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Notification = IvanovItog.Domain.Entities.Notification;
+using Application = System.Windows.Application;
 
 namespace IvanovItog.App.ViewModels;
 

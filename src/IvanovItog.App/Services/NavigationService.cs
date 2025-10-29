@@ -1,5 +1,6 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using Application = System.Windows.Application;
 
 namespace IvanovItog.App.Services;
 

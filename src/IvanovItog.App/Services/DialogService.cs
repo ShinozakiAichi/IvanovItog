@@ -1,5 +1,7 @@
 using System.Windows;
 
+using MessageBox = System.Windows.MessageBox;
+
 namespace IvanovItog.App.Services;
 
 public class DialogService
