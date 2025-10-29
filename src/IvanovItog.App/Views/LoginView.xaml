@@ -1,7 +1,7 @@
 <Window x:Class="IvanovItog.App.Views.LoginView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:props="clr-namespace:IvanovItog.App.Properties"
+        xmlns:props="clr-namespace:IvanovItog.App.Properties;assembly=IvanovItog.App"
         Title="{x:Static props:Resources.Login_Title}"
         Height="300"
         Width="400"
