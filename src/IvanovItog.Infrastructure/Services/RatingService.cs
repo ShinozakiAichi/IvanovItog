@@ -1,7 +1,7 @@
 using System.Linq;
+using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Enums;
 using IvanovItog.Domain.Interfaces;
-using IvanovItog.Shared.Dtos;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

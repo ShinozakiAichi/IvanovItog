@@ -1,9 +1,9 @@
 using System.Linq;
 using BCrypt.Net;
 using FluentValidation;
+using IvanovItog.Domain.Common;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Interfaces;
-using IvanovItog.Shared;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

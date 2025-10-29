@@ -1,6 +1,6 @@
 using IvanovItog.Domain.Enums;
 
-namespace IvanovItog.Shared.Dtos;
+namespace IvanovItog.Domain.Dtos;
 
 public record RequestDto(
     int Id,

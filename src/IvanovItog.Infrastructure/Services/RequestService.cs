@@ -1,8 +1,8 @@
+using IvanovItog.Domain.Common;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
 using IvanovItog.Domain.Interfaces;
-using IvanovItog.Shared;
-using IvanovItog.Shared.Validation;
+using IvanovItog.Infrastructure.Validation;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 

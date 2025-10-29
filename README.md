@@ -8,9 +8,8 @@ IvanovItog — настольное WPF-приложение для управл
 IvanovItog.sln
 ├─ src/
 │  ├─ IvanovItog.App/            # WPF UI, MVVM, LiveCharts, Serilog
-│  ├─ IvanovItog.Domain/         # Доменные сущности, перечисления, интерфейсы
-│  ├─ IvanovItog.Infrastructure/ # EF Core + сервисы, сиды, DI
-│  └─ IvanovItog.Shared/         # DTO, Result, валидаторы
+│  ├─ IvanovItog.Domain/         # Доменные сущности, перечисления, интерфейсы, DTO, Result
+│  └─ IvanovItog.Infrastructure/ # EF Core + сервисы, сиды, DI, валидаторы
 └─ tests/
    └─ IvanovItog.Tests/          # xUnit-тесты инфраструктурной логики
 ```
