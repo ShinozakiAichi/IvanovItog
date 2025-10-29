@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Threading;
 using IvanovItog.App.Services;
 using IvanovItog.App.ViewModels;
 using IvanovItog.App.Views;
@@ -54,7 +55,12 @@ public partial class App : System.Windows.Application
                 services.AddTransient<LoginViewModel>();
                 services.AddTransient<RequestsViewModel>();
                 services.AddTransient<RatingViewModel>();
-                services.AddTransient<AnalyticsViewModel>();
+                var dispatcher = Dispatcher.CurrentDispatcher;
+
+                services.AddTransient<AnalyticsViewModel>(sp =>
+                    new AnalyticsViewModel(
+                        sp.GetRequiredService<IAnalyticsService>(),
+                        dispatcher));
                 services.AddTransient<SettingsViewModel>();
                 services.AddTransient<RequestEditorViewModel>();
                 services.AddTransient<RegistrationViewModel>();

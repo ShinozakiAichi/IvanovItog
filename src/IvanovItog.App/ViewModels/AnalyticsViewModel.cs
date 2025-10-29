@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Windows;
+using System.Windows.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.Domain.Interfaces;
@@ -12,13 +12,13 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
-using Application = System.Windows.Application;
 
 namespace IvanovItog.App.ViewModels;
 
 public partial class AnalyticsViewModel : ObservableObject
 {
     private readonly IAnalyticsService _analyticsService;
+    private readonly Dispatcher _dispatcher;
     private static readonly SemaphoreSlim LogSemaphore = new(1, 1);
     private readonly string _logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "analytics.log");
 
@@ -40,26 +40,37 @@ public partial class AnalyticsViewModel : ObservableObject
 
     public IAsyncRelayCommand LoadCommand { get; }
 
-    public AnalyticsViewModel(IAnalyticsService analyticsService)
+    public AnalyticsViewModel(IAnalyticsService analyticsService, Dispatcher dispatcher)
     {
         _analyticsService = analyticsService;
+        _dispatcher = dispatcher ?? throw new ArgumentNullException(nameof(dispatcher));
         LoadCommand = new AsyncRelayCommand(LoadAsync, () => !IsBusy);
     }
 
     private async Task LoadAsync()
     {
-        if (IsBusy)
+        var alreadyBusy = await _dispatcher.InvokeAsync(() =>
+        {
+            if (IsBusy)
+            {
+                return true;
+            }
+
+            IsBusy = true;
+            return false;
+        });
+
+        if (alreadyBusy)
         {
             await LogAsync("Пропуск загрузки: операция уже выполняется.");
             return;
         }
 
-        IsBusy = true;
         await LogAsync($"Начало загрузки аналитики. Файл логов: {_logFilePath}");
 
         try
         {
-            Application.Current.Dispatcher.Invoke(ClearSeries);
+            await _dispatcher.InvokeAsync(ClearSeries);
             await LogAsync("Очищены предыдущие данные графиков.");
 
             var (fromLocal, toLocal, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
@@ -131,7 +142,7 @@ public partial class AnalyticsViewModel : ObservableObject
             var hasLoads = loads.Any();
             var hasClosedRequests = loads.Any(l => l.ClosedRequests > 0);
 
-            Application.Current.Dispatcher.Invoke(() =>
+            await _dispatcher.InvokeAsync(() =>
             {
                 if (timelinePoints.Any())
                 {
@@ -210,7 +221,7 @@ public partial class AnalyticsViewModel : ObservableObject
         }
         finally
         {
-            IsBusy = false;
+            await _dispatcher.InvokeAsync(() => IsBusy = false);
             await LogAsync("Загрузка аналитики завершена.");
         }
     }
