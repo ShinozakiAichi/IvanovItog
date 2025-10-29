@@ -55,7 +55,7 @@ public partial class AnalyticsViewModel : ObservableObject
             TimelineSeries.Clear();
             LoadSeries.Clear();
 
-            var statusData = await _analyticsService.GetRequestsByStatusAsync();
+            var statusData = (await _analyticsService.GetRequestsByStatusAsync()).ToList();
             foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>

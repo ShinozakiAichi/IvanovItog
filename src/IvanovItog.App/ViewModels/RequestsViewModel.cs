@@ -359,7 +359,7 @@ public partial class RequestsViewModel : ObservableObject
         }
     }
 
-    private async Task ExportAsync()
+    private Task ExportAsync()
     {
         try
         {
@@ -370,6 +370,8 @@ public partial class RequestsViewModel : ObservableObject
         {
             _dialogService.ShowError($"Ошибка экспорта: {ex.Message}");
         }
+
+        return Task.CompletedTask;
     }
 
     private void Logout()

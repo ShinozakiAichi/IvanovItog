@@ -35,7 +35,7 @@ public class RatingService : IRatingService
                 .Select(r => new { r.Priority, r.CreatedAt, r.ClosedAt })
                 .ToListAsync(cancellationToken);
 
-            var closedCount = closedRequests.Count;
+            var closedCount = closedRequests.Count();
             var overdueCount = closedRequests.Count(r => r.ClosedAt!.Value - r.CreatedAt > ResolutionTarget);
             var highPriorityCount = closedRequests.Count(r => r.Priority == Priority.High);
             var score = (closedCount * 10) - (overdueCount * 5) + (highPriorityCount * 4);
