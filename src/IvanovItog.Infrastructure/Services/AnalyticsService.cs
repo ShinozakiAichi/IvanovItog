@@ -1,6 +1,6 @@
-using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Enums;
 using IvanovItog.Domain.Interfaces;
+using IvanovItog.Shared.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace IvanovItog.Infrastructure.Services;
@@ -14,15 +14,20 @@ public class AnalyticsService : IAnalyticsService
         _dbContext = dbContext;
     }
 
-    public async Task<RequestsByStatusDto> GetRequestsByStatusAsync(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyCollection<RequestsByStatusDto>> GetRequestsByStatusAsync(CancellationToken cancellationToken = default)
     {
-        var counts = await _dbContext.Requests
+        var statuses = await _dbContext.Requests
             .Include(r => r.Status)
             .GroupBy(r => r.Status != null ? r.Status.Name : "Не задан")
-            .Select(g => new { Status = g.Key, Count = g.Count() })
-            .ToDictionaryAsync(x => x.Status, x => x.Count, cancellationToken);
+            .Select(g => new RequestsByStatusDto
+            {
+                Status = g.Key,
+                Count = g.Count()
+            })
+            .OrderBy(dto => dto.Status)
+            .ToListAsync(cancellationToken);
 
-        return new RequestsByStatusDto(counts);
+        return statuses;
     }
 
     public async Task<IReadOnlyCollection<RequestsTimelinePointDto>> GetRequestsTimelineAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
@@ -30,7 +35,11 @@ public class AnalyticsService : IAnalyticsService
         var timeline = await _dbContext.Requests
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
             .GroupBy(r => r.CreatedAt.Date)
-            .Select(g => new RequestsTimelinePointDto(g.Key, g.Count()))
+            .Select(g => new RequestsTimelinePointDto
+            {
+                Date = g.Key,
+                Count = g.Count()
+            })
             .OrderBy(p => p.Date)
             .ToListAsync(cancellationToken);
 
@@ -57,11 +66,13 @@ public class AnalyticsService : IAnalyticsService
             .ToDictionaryAsync(x => x.TechnicianId, x => x.Closed, cancellationToken);
 
         return technicians
-            .Select(t => new TechnicianLoadDto(
-                t.Id,
-                t.DisplayName,
-                activeLookup.TryGetValue(t.Id, out var active) ? active : 0,
-                closedLookup.TryGetValue(t.Id, out var closed) ? closed : 0))
+            .Select(t => new TechnicianLoadDto
+            {
+                TechnicianName = t.DisplayName,
+                ActiveRequests = activeLookup.TryGetValue(t.Id, out var active) ? active : 0,
+                ClosedRequests = closedLookup.TryGetValue(t.Id, out var closed) ? closed : 0
+            })
+            .OrderBy(dto => dto.TechnicianName)
             .ToList();
     }
 }

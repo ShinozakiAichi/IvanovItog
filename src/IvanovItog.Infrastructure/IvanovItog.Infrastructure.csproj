@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IvanovItog.Domain\IvanovItog.Domain.csproj" />
+    <ProjectReference Include="..\IvanovItog.Shared\IvanovItog.Shared.csproj" />
   </ItemGroup>
 </Project>

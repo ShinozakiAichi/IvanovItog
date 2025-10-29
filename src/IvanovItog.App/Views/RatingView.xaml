@@ -1,7 +1,7 @@
 <Window x:Class="IvanovItog.App.Views.RatingView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:props="clr-namespace:IvanovItog.App.Properties;assembly=IvanovItog.App"
+        xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Rating_Title}"
         Height="500"
         Width="700"
