@@ -5,7 +5,7 @@
         Title="{x:Static props:Resources.Login_Title}"
         Height="420"
         Width="760"
-        MinHeight="380"
+        MinHeight="540"
         MinWidth="640"
         MaxHeight="540"
         MaxWidth="900"
