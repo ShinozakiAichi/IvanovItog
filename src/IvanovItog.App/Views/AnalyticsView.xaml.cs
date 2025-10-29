@@ -7,11 +7,12 @@ public partial class AnalyticsView : Window
     public AnalyticsView()
     {
         InitializeComponent();
+        DataContextChanged += OnDataContextChanged;
     }
 
-    private async void OnLoaded(object sender, RoutedEventArgs e)
+    private async void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (DataContext is ViewModels.AnalyticsViewModel viewModel)
+        if (e.NewValue is ViewModels.AnalyticsViewModel viewModel)
         {
             await viewModel.LoadCommand.ExecuteAsync(null);
         }
