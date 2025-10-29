@@ -4,23 +4,23 @@ namespace IvanovItog.App.Properties;
 using System.Globalization;
 using System.Resources;
 
-internal static class Resources
+public static class Resources
 {
     private static ResourceManager? resourceMan;
     private static CultureInfo? resourceCulture;
 
     private static ResourceManager ResourceManager => resourceMan ??= new ResourceManager("IvanovItog.App.Properties.Resources", typeof(Resources).Assembly);
 
-    internal static CultureInfo? Culture
+    public static CultureInfo? Culture
     {
         get => resourceCulture;
         set => resourceCulture = value;
     }
 
-    internal static string Login_Title => ResourceManager.GetString(nameof(Login_Title), resourceCulture) ?? string.Empty;
-    internal static string Requests_Title => ResourceManager.GetString(nameof(Requests_Title), resourceCulture) ?? string.Empty;
-    internal static string Rating_Title => ResourceManager.GetString(nameof(Rating_Title), resourceCulture) ?? string.Empty;
-    internal static string Analytics_Title => ResourceManager.GetString(nameof(Analytics_Title), resourceCulture) ?? string.Empty;
-    internal static string Settings_Title => ResourceManager.GetString(nameof(Settings_Title), resourceCulture) ?? string.Empty;
-    internal static string RequestEditor_Title => ResourceManager.GetString(nameof(RequestEditor_Title), resourceCulture) ?? string.Empty;
+    public static string Login_Title => ResourceManager.GetString(nameof(Login_Title), resourceCulture) ?? string.Empty;
+    public static string Requests_Title => ResourceManager.GetString(nameof(Requests_Title), resourceCulture) ?? string.Empty;
+    public static string Rating_Title => ResourceManager.GetString(nameof(Rating_Title), resourceCulture) ?? string.Empty;
+    public static string Analytics_Title => ResourceManager.GetString(nameof(Analytics_Title), resourceCulture) ?? string.Empty;
+    public static string Settings_Title => ResourceManager.GetString(nameof(Settings_Title), resourceCulture) ?? string.Empty;
+    public static string RequestEditor_Title => ResourceManager.GetString(nameof(RequestEditor_Title), resourceCulture) ?? string.Empty;
 }

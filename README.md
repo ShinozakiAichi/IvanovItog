@@ -27,7 +27,7 @@ IvanovItog.sln
 ## Требования
 
 - .NET 8 SDK
-- Windows с поддержкой WPF
+- Windows 10 версии 2004 (build 19041) или новее с поддержкой WPF
 
 ## Сборка и запуск
 
