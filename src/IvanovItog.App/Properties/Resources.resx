@@ -30,4 +30,7 @@
   <data name="RequestEditor_Title" xml:space="preserve">
     <value>Заявка</value>
   </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>IvanovItog — система заявок</value>
+  </data>
 </root>

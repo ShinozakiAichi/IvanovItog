@@ -6,7 +6,7 @@
 //     the code is regenerated.
 // </auto-generated>
 
-#nullable disable
+#nullable enable
 
 namespace IvanovItog.App.Properties
 {
@@ -62,6 +62,8 @@ namespace IvanovItog.App.Properties
         public static string RequestEditor_Title => ResourceManager.GetString("RequestEditor_Title", resourceCulture) ?? string.Empty;
 
         public static string Requests_Title => ResourceManager.GetString("Requests_Title", resourceCulture) ?? string.Empty;
+
+        public static string AppTitle => ResourceManager.GetString("AppTitle", resourceCulture) ?? string.Empty;
 
         public static string Settings_Title => ResourceManager.GetString("Settings_Title", resourceCulture) ?? string.Empty;
     }
