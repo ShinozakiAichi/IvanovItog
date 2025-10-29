@@ -1,3 +1,4 @@
+using System.Linq;
 using BCrypt.Net;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
@@ -19,7 +20,16 @@ public static class SeedData
 
     public static async Task InitializeAsync(AppDbContext context, CancellationToken cancellationToken = default)
     {
-        await context.Database.MigrateAsync(cancellationToken);
+        var migrations = await context.Database.GetMigrationsAsync(cancellationToken);
+
+        if (migrations.Any())
+        {
+            await context.Database.MigrateAsync(cancellationToken);
+        }
+        else
+        {
+            await context.Database.EnsureCreatedAsync(cancellationToken);
+        }
 
         if (!await context.Categories.AnyAsync(cancellationToken))
         {

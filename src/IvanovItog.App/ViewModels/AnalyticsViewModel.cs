@@ -55,7 +55,7 @@ public partial class AnalyticsViewModel : ObservableObject
             TimelineSeries.Clear();
             LoadSeries.Clear();
 
-            var statusData = (await _analyticsService.GetRequestsByStatusAsync()).ToList();
+            var statusData = await _analyticsService.GetRequestsByStatusAsync();
             foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>
@@ -84,7 +84,7 @@ public partial class AnalyticsViewModel : ObservableObject
             };
             OnPropertyChanged(nameof(TimelineXAxis));
 
-            var loads = (await _analyticsService.GetTechnicianLoadAsync(From, To)).ToList();
+            var loads = await _analyticsService.GetTechnicianLoadAsync(From, To);
             LoadSeries.Add(new ColumnSeries<int>
             {
                 Values = loads.Select(l => l.ActiveRequests).ToArray(),
