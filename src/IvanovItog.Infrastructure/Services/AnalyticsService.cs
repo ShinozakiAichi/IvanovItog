@@ -33,18 +33,28 @@ public class AnalyticsService : IAnalyticsService
 
     public async Task<IReadOnlyCollection<RequestsTimelinePointDto>> GetRequestsTimelineAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
     {
-        var timeline = await _dbContext.Requests
+        var timelineAggregates = await _dbContext.Requests
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
-            .GroupBy(r => r.CreatedAt.Date)
-            .Select(g => new RequestsTimelinePointDto
+            .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month, r.CreatedAt.Day })
+            .Select(g => new
             {
-                Date = g.Key,
+                g.Key.Year,
+                g.Key.Month,
+                g.Key.Day,
                 Count = g.Count()
             })
-            .OrderBy(p => p.Date)
+            .OrderBy(x => x.Year)
+            .ThenBy(x => x.Month)
+            .ThenBy(x => x.Day)
             .ToListAsync(cancellationToken);
 
-        return timeline;
+        return timelineAggregates
+            .Select(x => new RequestsTimelinePointDto
+            {
+                Date = DateTime.SpecifyKind(new DateTime(x.Year, x.Month, x.Day), DateTimeKind.Utc),
+                Count = x.Count
+            })
+            .ToList();
     }
 
     public async Task<IReadOnlyCollection<TechnicianLoadDto>> GetTechnicianLoadAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
