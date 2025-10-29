@@ -6,6 +6,7 @@ using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.App.Services;
+using Application = System.Windows.Application;
 
 namespace IvanovItog.App.ViewModels;
 
