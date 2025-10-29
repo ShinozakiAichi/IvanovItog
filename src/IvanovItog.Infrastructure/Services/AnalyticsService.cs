@@ -15,9 +15,12 @@ public class AnalyticsService : IAnalyticsService
         _dbContext = dbContext;
     }
 
-    public async Task<IReadOnlyCollection<RequestsByStatusDto>> GetRequestsByStatusAsync(CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyCollection<RequestsByStatusDto>> GetRequestsByStatusAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
     {
+        NormalizeRange(ref from, ref to);
+
         var statuses = await _dbContext.Requests
+            .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
             .Include(r => r.Status)
             .GroupBy(r => r.Status != null ? r.Status.Name : "Не задан")
             .Select(g => new RequestsByStatusDto
@@ -33,6 +36,8 @@ public class AnalyticsService : IAnalyticsService
 
     public async Task<IReadOnlyCollection<RequestsTimelinePointDto>> GetRequestsTimelineAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
     {
+        NormalizeRange(ref from, ref to);
+
         var timelineAggregates = await _dbContext.Requests
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
             .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month, r.CreatedAt.Day })
@@ -59,6 +64,8 @@ public class AnalyticsService : IAnalyticsService
 
     public async Task<IReadOnlyCollection<TechnicianLoadDto>> GetTechnicianLoadAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
     {
+        NormalizeRange(ref from, ref to);
+
         var technicians = await _dbContext.Users
             .Where(u => u.Role == Role.Tech)
             .Select(u => new { u.Id, u.DisplayName })
@@ -85,5 +92,15 @@ public class AnalyticsService : IAnalyticsService
             })
             .OrderBy(dto => dto.TechnicianName)
             .ToList();
+    }
+
+    private static void NormalizeRange(ref DateTime from, ref DateTime to)
+    {
+        if (from <= to)
+        {
+            return;
+        }
+
+        (from, to) = (to, from);
     }
 }

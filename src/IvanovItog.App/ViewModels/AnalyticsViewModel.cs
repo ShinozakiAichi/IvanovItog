@@ -24,10 +24,10 @@ public partial class AnalyticsViewModel : ObservableObject
     public Axis[] LoadXAxis { get; private set; } = Array.Empty<Axis>();
 
     [ObservableProperty]
-    private DateTime _from = DateTime.UtcNow.AddDays(-30);
+    private DateTime _from = DateTime.SpecifyKind(DateTime.UtcNow.Date.AddDays(-30), DateTimeKind.Unspecified);
 
     [ObservableProperty]
-    private DateTime _to = DateTime.UtcNow;
+    private DateTime _to = DateTime.SpecifyKind(DateTime.UtcNow.Date, DateTimeKind.Unspecified);
 
     [ObservableProperty]
     private bool _isBusy;
@@ -51,11 +51,73 @@ public partial class AnalyticsViewModel : ObservableObject
         {
             IsBusy = true;
 
-            StatusSeries.Clear();
-            TimelineSeries.Clear();
-            LoadSeries.Clear();
+            ClearSeries();
 
-            var statusData = await _analyticsService.GetRequestsByStatusAsync();
+            var (fromUtc, toUtc, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
+            if (From != normalizedFrom)
+            {
+                From = normalizedFrom;
+            }
+
+            if (To != normalizedTo)
+            {
+                To = normalizedTo;
+            }
+
+            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(fromUtc, toUtc)).OrderBy(p => p.Date).ToList();
+
+            if (!timelinePoints.Any())
+            {
+                var fallbackTimeline = (await _analyticsService.GetRequestsTimelineAsync(DateTime.MinValue, DateTime.MaxValue))
+                    .OrderBy(p => p.Date)
+                    .ToList();
+
+                if (fallbackTimeline.Any())
+                {
+                    var fallbackFrom = DateTime.SpecifyKind(fallbackTimeline.First().Date.Date, DateTimeKind.Unspecified);
+                    var fallbackTo = DateTime.SpecifyKind(fallbackTimeline.Last().Date.Date, DateTimeKind.Unspecified);
+
+                    if (From != fallbackFrom)
+                    {
+                        From = fallbackFrom;
+                    }
+
+                    if (To != fallbackTo)
+                    {
+                        To = fallbackTo;
+                    }
+
+                    (fromUtc, toUtc, _, _) = NormalizeRange(From, To);
+                    timelinePoints = fallbackTimeline;
+                }
+            }
+
+            if (timelinePoints.Any())
+            {
+                TimelineSeries.Add(new LineSeries<int>
+                {
+                    Values = timelinePoints.Select(p => p.Count).ToArray(),
+                    GeometrySize = 8,
+                    Fill = null
+                });
+
+                TimelineXAxis = new Axis[]
+                {
+                    new Axis
+                    {
+                        Labels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList(),
+                        LabelsRotation = 15
+                    }
+                };
+            }
+            else
+            {
+                TimelineXAxis = Array.Empty<Axis>();
+            }
+
+            OnPropertyChanged(nameof(TimelineXAxis));
+
+            var statusData = await _analyticsService.GetRequestsByStatusAsync(fromUtc, toUtc);
             foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>
@@ -67,37 +129,38 @@ public partial class AnalyticsViewModel : ObservableObject
                 });
             }
 
-            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(From, To)).OrderBy(p => p.Date).ToList();
-            TimelineSeries.Add(new LineSeries<int>
+            var loads = await _analyticsService.GetTechnicianLoadAsync(fromUtc, toUtc);
+            if (loads.Any())
             {
-                Values = timelinePoints.Select(p => p.Count).ToArray(),
-                GeometrySize = 8,
-                Fill = null
-            });
-            TimelineXAxis = new Axis[]
-            {
-                new Axis
+                LoadSeries.Add(new ColumnSeries<int>
                 {
-                    Labels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList(),
-                    LabelsRotation = 15
-                }
-            };
-            OnPropertyChanged(nameof(TimelineXAxis));
+                    Values = loads.Select(l => l.ActiveRequests).ToArray(),
+                    Name = "Активные"
+                });
 
-            var loads = await _analyticsService.GetTechnicianLoadAsync(From, To);
-            LoadSeries.Add(new ColumnSeries<int>
-            {
-                Values = loads.Select(l => l.ActiveRequests).ToArray(),
-                Name = "Активные"
-            });
-            LoadXAxis = new Axis[]
-            {
-                new Axis
+                if (loads.Any(l => l.ClosedRequests > 0))
                 {
-                    Labels = loads.Select(l => l.TechnicianName).ToList(),
-                    LabelsRotation = 15
+                    LoadSeries.Add(new ColumnSeries<int>
+                    {
+                        Values = loads.Select(l => l.ClosedRequests).ToArray(),
+                        Name = "Завершённые"
+                    });
                 }
-            };
+
+                LoadXAxis = new Axis[]
+                {
+                    new Axis
+                    {
+                        Labels = loads.Select(l => l.TechnicianName).ToList(),
+                        LabelsRotation = 15
+                    }
+                };
+            }
+            else
+            {
+                LoadXAxis = Array.Empty<Axis>();
+            }
+
             OnPropertyChanged(nameof(LoadXAxis));
         }
         finally
@@ -109,5 +172,32 @@ public partial class AnalyticsViewModel : ObservableObject
     partial void OnIsBusyChanged(bool value)
     {
         LoadCommand.NotifyCanExecuteChanged();
+    }
+
+    private void ClearSeries()
+    {
+        StatusSeries.Clear();
+        TimelineSeries.Clear();
+        LoadSeries.Clear();
+        TimelineXAxis = Array.Empty<Axis>();
+        LoadXAxis = Array.Empty<Axis>();
+        OnPropertyChanged(nameof(TimelineXAxis));
+        OnPropertyChanged(nameof(LoadXAxis));
+    }
+
+    private static (DateTime fromUtc, DateTime toUtc, DateTime normalizedFrom, DateTime normalizedTo) NormalizeRange(DateTime from, DateTime to)
+    {
+        var normalizedFrom = DateTime.SpecifyKind(from.Date, DateTimeKind.Unspecified);
+        var normalizedTo = DateTime.SpecifyKind(to.Date, DateTimeKind.Unspecified);
+
+        if (normalizedFrom > normalizedTo)
+        {
+            (normalizedFrom, normalizedTo) = (normalizedTo, normalizedFrom);
+        }
+
+        var fromUtc = DateTime.SpecifyKind(normalizedFrom, DateTimeKind.Utc);
+        var toUtc = DateTime.SpecifyKind(normalizedTo.AddDays(1).AddTicks(-1), DateTimeKind.Utc);
+
+        return (fromUtc, toUtc, normalizedFrom, normalizedTo);
     }
 }

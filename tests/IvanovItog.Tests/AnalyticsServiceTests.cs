@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
@@ -34,6 +35,8 @@ public class AnalyticsServiceTests
             CreatedAt = DateTime.UtcNow
         });
 
+        var createdAt = new DateTime(2024, 1, 10, 10, 0, 0, DateTimeKind.Utc);
+
         context.Requests.AddRange(
             new Request
             {
@@ -45,7 +48,7 @@ public class AnalyticsServiceTests
                 StatusId = newStatus.Id,
                 Status = newStatus,
                 CreatedById = 1,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = createdAt
             },
             new Request
             {
@@ -57,14 +60,16 @@ public class AnalyticsServiceTests
                 StatusId = closedStatus.Id,
                 Status = closedStatus,
                 CreatedById = 1,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = createdAt.AddHours(2)
             });
 
         await context.SaveChangesAsync();
 
         var service = new AnalyticsService(context);
 
-        var stats = await service.GetRequestsByStatusAsync();
+        var stats = await service.GetRequestsByStatusAsync(
+            createdAt.Date,
+            createdAt.Date.AddDays(1).AddTicks(-1));
 
         Assert.Equal(2, stats.Count());
         var newRequestStats = Assert.Single(stats.Where(s => s.Status == newStatus.Name));
@@ -143,7 +148,7 @@ public class AnalyticsServiceTests
 
         var timeline = await service.GetRequestsTimelineAsync(
             new DateTime(2023, 12, 31, 0, 0, 0, DateTimeKind.Utc),
-            new DateTime(2024, 1, 3, 0, 0, 0, DateTimeKind.Utc));
+            new DateTime(2024, 1, 3, 0, 0, 0, DateTimeKind.Utc).AddDays(1).AddTicks(-1));
 
         Assert.Equal(2, timeline.Count);
         Assert.Equal(new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc), timeline[0].Date);
@@ -193,7 +198,7 @@ public class AnalyticsServiceTests
         context.Statuses.Add(status);
 
         var rangeStart = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        var rangeEnd = new DateTime(2024, 1, 31, 23, 59, 59, DateTimeKind.Utc);
+        var rangeEnd = new DateTime(2024, 1, 31, 0, 0, 0, DateTimeKind.Utc).AddDays(1).AddTicks(-1);
 
         context.Requests.AddRange(
             new Request

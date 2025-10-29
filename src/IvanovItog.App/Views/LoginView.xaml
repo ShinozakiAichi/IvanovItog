@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Login_Title}"
-        Height="420"
+        Height="540"
         Width="760"
         MinHeight="540"
         MinWidth="640"

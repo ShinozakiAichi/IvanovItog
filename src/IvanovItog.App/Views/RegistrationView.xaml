@@ -7,6 +7,8 @@
         Width="420"
         MinHeight="400"
         MinWidth="380"
+        MaxHeight="440"
+        MaxWidth="420"
         WindowStartupLocation="CenterOwner">
     <Border Margin="24"
             Padding="24"
