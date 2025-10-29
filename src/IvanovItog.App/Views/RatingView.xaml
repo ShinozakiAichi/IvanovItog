@@ -33,9 +33,9 @@
                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Spacing="12">
-                                <TextBlock Text="{Binding Medal}" FontSize="20" />
-                                <TextBlock Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Medal}" FontSize="20" Margin="0,0,12,0" />
+                                <TextBlock Text="{Binding Technician.TechnicianName}" FontWeight="Bold" Margin="0,0,12,0" />
                                 <TextBlock Text="{Binding Technician.Score}" Foreground="Gray" />
                             </StackPanel>
                         </DataTemplate>

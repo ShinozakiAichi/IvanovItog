@@ -45,9 +45,8 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Orientation="Horizontal"
-                        Margin="0,16,0,0"
-                        Spacing="12">
-                <StackPanel Width="160">
+                        Margin="0,16,0,0">
+                <StackPanel Width="160" Margin="0,0,12,0">
                     <TextBlock Text="Категория" />
                     <ComboBox Margin="0,6,0,0"
                               ItemsSource="{Binding Categories}"
@@ -55,7 +54,7 @@
                               SelectedValuePath="Id"
                               SelectedValue="{Binding CategoryId}" />
                 </StackPanel>
-                <StackPanel Width="160">
+                <StackPanel Width="160" Margin="0,0,12,0">
                     <TextBlock Text="Статус" />
                     <ComboBox Margin="0,6,0,0"
                               ItemsSource="{Binding Statuses}"

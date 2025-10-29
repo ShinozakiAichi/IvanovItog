@@ -24,12 +24,12 @@
                 BorderThickness="1"
                 Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                 Margin="0,0,0,16">
-            <StackPanel Orientation="Horizontal" Spacing="12">
-                <StackPanel Width="180">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="180" Margin="0,0,12,0">
                     <TextBlock Text="Дата с" />
                     <DatePicker Margin="0,6,0,0" SelectedDate="{Binding From}" />
                 </StackPanel>
-                <StackPanel Width="180">
+                <StackPanel Width="180" Margin="0,0,12,0">
                     <TextBlock Text="Дата по" />
                     <DatePicker Margin="0,6,0,0" SelectedDate="{Binding To}" />
                 </StackPanel>
