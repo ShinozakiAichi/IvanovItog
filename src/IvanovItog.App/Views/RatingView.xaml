@@ -1,0 +1,32 @@
+<Window x:Class="IvanovItog.App.Views.RatingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:props="clr-namespace:IvanovItog.App.Properties"
+        Title="{x:Static props:Resources.Rating_Title}"
+        Height="500"
+        Width="700"
+        Loaded="OnLoaded"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel Margin="10">
+        <ListBox DockPanel.Dock="Top" ItemsSource="{Binding TopThreeMedals}" Height="100">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="{Binding Medal}" FontSize="18" />
+                        <TextBlock Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Technician.Score}" Foreground="Gray" Margin="10,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DataGrid ItemsSource="{Binding Ratings}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Техник" Binding="{Binding TechnicianName}" Width="*" />
+                <DataGridTextColumn Header="Закрыто" Binding="{Binding ClosedCount}" Width="100" />
+                <DataGridTextColumn Header="Просрочки" Binding="{Binding OverdueCount}" Width="100" />
+                <DataGridTextColumn Header="Высокий приоритет" Binding="{Binding HighPriorityCount}" Width="150" />
+                <DataGridTextColumn Header="Баллы" Binding="{Binding Score}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

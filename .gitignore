@@ -1,0 +1,8 @@
+bin/
+obj/
+*.user
+*.swp
+*.suo
+*.userprefs
+logs/
+appsettings.user.json

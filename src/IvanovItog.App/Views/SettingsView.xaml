@@ -1,0 +1,28 @@
+<Window x:Class="IvanovItog.App.Views.SettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:props="clr-namespace:IvanovItog.App.Properties"
+        Title="{x:Static props:Resources.Settings_Title}"
+        Height="300"
+        Width="500"
+        Loaded="OnLoaded"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="20" RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="Тема" VerticalAlignment="Center" />
+            <ComboBox Width="150" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <TextBlock Text="Вложения" VerticalAlignment="Center" />
+            <TextBox Width="300" Text="{Binding AttachmentsPath}" />
+        </StackPanel>
+        <CheckBox Grid.Row="2" Content="Уведомления" IsChecked="{Binding NotificationsEnabled}" />
+        <Button Grid.Row="3" Content="Сохранить" Command="{Binding SaveCommand}" Width="120" HorizontalAlignment="Left" />
+    </Grid>
+</Window>
