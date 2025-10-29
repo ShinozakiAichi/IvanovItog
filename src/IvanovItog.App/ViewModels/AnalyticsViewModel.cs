@@ -1,6 +1,8 @@
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.Domain.Interfaces;
@@ -15,6 +17,8 @@ namespace IvanovItog.App.ViewModels;
 public partial class AnalyticsViewModel : ObservableObject
 {
     private readonly IAnalyticsService _analyticsService;
+    private static readonly SemaphoreSlim LogSemaphore = new(1, 1);
+    private readonly string _logFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "analytics.log");
 
     public ObservableCollection<ISeries> StatusSeries { get; } = new();
     public ObservableCollection<ISeries> TimelineSeries { get; } = new();
@@ -44,14 +48,17 @@ public partial class AnalyticsViewModel : ObservableObject
     {
         if (IsBusy)
         {
+            await LogAsync("Пропуск загрузки: операция уже выполняется.");
             return;
         }
 
+        IsBusy = true;
+        await LogAsync($"Начало загрузки аналитики. Файл логов: {_logFilePath}");
+
         try
         {
-            IsBusy = true;
-
             ClearSeries();
+            await LogAsync("Очищены предыдущие данные графиков.");
 
             var (fromLocal, toLocal, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
             if (From != normalizedFrom)
@@ -64,10 +71,16 @@ public partial class AnalyticsViewModel : ObservableObject
                 To = normalizedTo;
             }
 
-            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(fromLocal, toLocal)).OrderBy(p => p.Date).ToList();
+            await LogAsync($"Используемый диапазон: {normalizedFrom:yyyy-MM-dd} — {normalizedTo:yyyy-MM-dd}.");
+
+            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(fromLocal, toLocal))
+                .OrderBy(p => p.Date)
+                .ToList();
 
             if (!timelinePoints.Any())
             {
+                await LogAsync("Основной запрос хронологии не вернул данных. Выполняем запрос по полному диапазону.");
+
                 var fallbackTimeline = (await _analyticsService.GetRequestsTimelineAsync(DateTime.MinValue, DateTime.MaxValue))
                     .OrderBy(p => p.Date)
                     .ToList();
@@ -89,8 +102,17 @@ public partial class AnalyticsViewModel : ObservableObject
 
                     (fromLocal, toLocal, _, _) = NormalizeRange(From, To);
                     timelinePoints = fallbackTimeline;
+
+                    await LogAsync($"Использован запасной диапазон: {fallbackFrom:yyyy-MM-dd} — {fallbackTo:yyyy-MM-dd}.");
+                }
+
+                if (!timelinePoints.Any())
+                {
+                    await LogAsync("Данные хронологии отсутствуют даже после запасного запроса.");
                 }
             }
+
+            await LogAsync($"Получено точек хронологии: {timelinePoints.Count}.");
 
             if (timelinePoints.Any())
             {
@@ -117,10 +139,9 @@ public partial class AnalyticsViewModel : ObservableObject
 
             OnPropertyChanged(nameof(TimelineXAxis));
 
-            Console.WriteLine($"TimelinePoints: {timelinePoints.Count}");
-
             var statusData = (await _analyticsService.GetRequestsByStatusAsync(fromLocal, toLocal)).ToList();
-            Console.WriteLine($"StatusData: {statusData.Count}");
+            await LogAsync($"Получено статусов: {statusData.Count}.");
+
             foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>
@@ -133,7 +154,8 @@ public partial class AnalyticsViewModel : ObservableObject
             }
 
             var loads = (await _analyticsService.GetTechnicianLoadAsync(fromLocal, toLocal)).ToList();
-            Console.WriteLine($"Loads: {loads.Count}");
+            await LogAsync($"Получено данных по нагрузке: {loads.Count}.");
+
             if (loads.Any())
             {
                 LoadSeries.Add(new ColumnSeries<int>
@@ -167,9 +189,15 @@ public partial class AnalyticsViewModel : ObservableObject
 
             OnPropertyChanged(nameof(LoadXAxis));
         }
+        catch (Exception ex)
+        {
+            await LogErrorAsync("Ошибка во время загрузки аналитики", ex);
+            throw;
+        }
         finally
         {
             IsBusy = false;
+            await LogAsync("Загрузка аналитики завершена.");
         }
     }
 
@@ -187,6 +215,29 @@ public partial class AnalyticsViewModel : ObservableObject
         LoadXAxis = Array.Empty<Axis>();
         OnPropertyChanged(nameof(TimelineXAxis));
         OnPropertyChanged(nameof(LoadXAxis));
+    }
+
+    private Task LogAsync(string message) => WriteLogEntryAsync(message);
+
+    private Task LogErrorAsync(string message, Exception exception)
+    {
+        var details = $"{message}: {exception.GetType().FullName}: {exception.Message}{Environment.NewLine}{exception.StackTrace}";
+        return WriteLogEntryAsync(details);
+    }
+
+    private async Task WriteLogEntryAsync(string message)
+    {
+        var line = $"[{DateTime.Now:O}] {message}{Environment.NewLine}";
+
+        await LogSemaphore.WaitAsync();
+        try
+        {
+            await File.AppendAllTextAsync(_logFilePath, line);
+        }
+        finally
+        {
+            LogSemaphore.Release();
+        }
     }
 
     private static (DateTime fromLocal, DateTime toLocal, DateTime normalizedFrom, DateTime normalizedTo) NormalizeRange(DateTime from, DateTime to)
