@@ -27,7 +27,7 @@ public class RatingService : IRatingService
             .Select(u => new { u.Id, u.DisplayName })
             .ToListAsync(cancellationToken);
 
-        var ratings = new List<TechnicianRatingDto>(technicians.Count);
+        var ratings = new List<TechnicianRatingDto>(technicians.Count());
         foreach (var tech in technicians)
         {
             var closedRequests = await _dbContext.Requests
