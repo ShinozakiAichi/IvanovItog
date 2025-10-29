@@ -10,9 +10,9 @@ public partial class AnalyticsView : Window
 
     public AnalyticsView(AnalyticsViewModel viewModel)
     {
-        InitializeComponent();
         _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
         DataContext = _viewModel;
+        InitializeComponent();
         Loaded += OnLoaded;
     }
 
