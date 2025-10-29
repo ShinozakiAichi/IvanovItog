@@ -81,7 +81,7 @@ public static class StackPanelEx
 
             var originalMargin = (Thickness)child.GetValue(OriginalMarginProperty);
 
-            if (panel.Orientation == Orientation.Horizontal)
+            if (panel.Orientation == System.Windows.Controls.Orientation.Horizontal)
             {
                 child.Margin = new Thickness(
                     i == 0 ? originalMargin.Left : originalMargin.Left + spacing,
