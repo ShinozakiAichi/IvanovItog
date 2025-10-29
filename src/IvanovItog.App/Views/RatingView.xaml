@@ -11,10 +11,10 @@
         <ListBox DockPanel.Dock="Top" ItemsSource="{Binding TopThreeMedals}" Height="100">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Spacing="10">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Medal}" FontSize="18" />
-                        <TextBlock Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
-                        <TextBlock Text="{Binding Technician.Score}" Foreground="Gray" Margin="10,0,0,0" />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
+                        <TextBlock Margin="10,0,0,0" Text="{Binding Technician.Score}" Foreground="Gray" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
