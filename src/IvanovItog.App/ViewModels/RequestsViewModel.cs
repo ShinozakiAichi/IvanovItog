@@ -24,6 +24,7 @@ public partial class RequestsViewModel : ObservableObject
     private readonly IServiceProvider _serviceProvider;
     private readonly INotificationService _notificationService;
     private readonly TrayNotificationService _trayNotificationService;
+    private bool _hasPendingFilterReload;
 
     public ObservableCollection<Request> Requests { get; } = new();
     public ObservableCollection<Category> Categories { get; } = new();
@@ -123,6 +124,12 @@ public partial class RequestsViewModel : ObservableObject
         CreateRequestCommand.NotifyCanExecuteChanged();
         EditRequestCommand.NotifyCanExecuteChanged();
         DeleteRequestCommand.NotifyCanExecuteChanged();
+
+        if (!value && _hasPendingFilterReload)
+        {
+            _hasPendingFilterReload = false;
+            _ = LoadRequestsAsync();
+        }
     }
 
     partial void OnCanManageUsersChanged(bool value)
@@ -131,6 +138,29 @@ public partial class RequestsViewModel : ObservableObject
     }
 
     private bool CanModifyRequest() => SelectedRequest is not null && !IsBusy;
+
+    partial void OnSelectedCategoryIdChanged(int? value) => ScheduleRequestsReload();
+
+    partial void OnSelectedStatusIdChanged(int? value) => ScheduleRequestsReload();
+
+    partial void OnSelectedPriorityChanged(Priority? value) => ScheduleRequestsReload();
+
+    partial void OnCreatedFromChanged(DateTime? value) => ScheduleRequestsReload();
+
+    partial void OnCreatedToChanged(DateTime? value) => ScheduleRequestsReload();
+
+    partial void OnSearchChanged(string? value) => ScheduleRequestsReload();
+
+    private void ScheduleRequestsReload()
+    {
+        if (IsBusy)
+        {
+            _hasPendingFilterReload = true;
+            return;
+        }
+
+        _ = LoadRequestsAsync();
+    }
 
     private async Task InitializeAsync()
     {
