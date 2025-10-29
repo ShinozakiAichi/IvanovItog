@@ -6,6 +6,8 @@
 //     the code is regenerated.
 // </auto-generated>
 
+#nullable disable
+
 namespace IvanovItog.App.Properties
 {
     using System;
