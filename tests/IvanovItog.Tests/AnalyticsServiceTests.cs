@@ -79,6 +79,77 @@ public class AnalyticsServiceTests
     }
 
     [Fact]
+    public async Task GetRequestsByStatusAsync_ShouldReturnGroupedStatisticsWithSqliteProvider()
+    {
+        await using var connection = new SqliteConnection("DataSource=:memory:");
+        await connection.OpenAsync();
+
+        var options = new DbContextOptionsBuilder<AppDbContext>()
+            .UseSqlite(connection)
+            .Options;
+
+        await using var context = new AppDbContext(options);
+        await context.Database.EnsureCreatedAsync();
+
+        var newStatus = new Status { Id = 1, Name = "Новая" };
+        var closedStatus = new Status { Id = 2, Name = "Закрыта" };
+        var category = new Category { Id = 1, Name = "Общая" };
+        var author = new User
+        {
+            Id = 1,
+            Login = "author",
+            PasswordHash = string.Empty,
+            DisplayName = "Author",
+            Role = Role.User,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        context.Statuses.AddRange(newStatus, closedStatus);
+        context.Categories.Add(category);
+        context.Users.Add(author);
+
+        var createdAt = new DateTime(2024, 1, 10, 10, 0, 0, DateTimeKind.Utc);
+
+        context.Requests.AddRange(
+            new Request
+            {
+                Id = 1,
+                Title = "Первый",
+                Description = "Test",
+                CategoryId = category.Id,
+                Priority = Priority.Medium,
+                StatusId = newStatus.Id,
+                CreatedById = author.Id,
+                CreatedAt = createdAt
+            },
+            new Request
+            {
+                Id = 2,
+                Title = "Второй",
+                Description = "Test",
+                CategoryId = category.Id,
+                Priority = Priority.High,
+                StatusId = closedStatus.Id,
+                CreatedById = author.Id,
+                CreatedAt = createdAt.AddHours(2)
+            });
+
+        await context.SaveChangesAsync();
+
+        var service = new AnalyticsService(context);
+
+        var stats = await service.GetRequestsByStatusAsync(
+            createdAt.Date,
+            createdAt.Date.AddDays(1).AddTicks(-1));
+
+        Assert.Equal(2, stats.Count());
+        var newRequestStats = Assert.Single(stats.Where(s => s.Status == newStatus.Name));
+        Assert.Equal(1, newRequestStats.Count);
+        var closedRequestStats = Assert.Single(stats.Where(s => s.Status == closedStatus.Name));
+        Assert.Equal(1, closedRequestStats.Count);
+    }
+
+    [Fact]
     public async Task GetRequestsTimelineAsync_ShouldAggregateByDayWithSqliteProvider()
     {
         await using var connection = new SqliteConnection("DataSource=:memory:");
