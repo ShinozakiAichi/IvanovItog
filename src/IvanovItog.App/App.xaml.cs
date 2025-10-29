@@ -1,8 +1,11 @@
+using System;
+using System.IO;
 using System.Windows;
 using IvanovItog.App.Services;
 using IvanovItog.App.ViewModels;
 using IvanovItog.App.Views;
 using IvanovItog.Infrastructure;
+using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +34,7 @@ public partial class App : System.Windows.Application
             .UseSerilog()
             .ConfigureServices((context, services) =>
             {
-                var connectionString = context.Configuration.GetConnectionString("Default") ?? "Data Source=ivanov_itog.db";
+                var connectionString = BuildSqliteConnectionString(context.Configuration.GetConnectionString("Default"));
                 services.AddInfrastructure(connectionString, Log.Logger);
 
                 services.AddSingleton<NavigationService>();
@@ -74,5 +77,28 @@ public partial class App : System.Windows.Application
 
         Log.CloseAndFlush();
         base.OnExit(e);
+}
+
+    private static string BuildSqliteConnectionString(string? configuredConnectionString)
+    {
+        var defaultDataSource = Path.Combine(AppContext.BaseDirectory, "ivanov_itog.db");
+
+        if (string.IsNullOrWhiteSpace(configuredConnectionString))
+        {
+            return $"Data Source={defaultDataSource}";
+        }
+
+        var builder = new SqliteConnectionStringBuilder(configuredConnectionString);
+
+        if (string.IsNullOrWhiteSpace(builder.DataSource))
+        {
+            builder.DataSource = defaultDataSource;
+        }
+        else if (!Path.IsPathRooted(builder.DataSource))
+        {
+            builder.DataSource = Path.Combine(AppContext.BaseDirectory, builder.DataSource);
+        }
+
+        return builder.ToString();
     }
 }
