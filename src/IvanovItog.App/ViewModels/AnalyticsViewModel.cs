@@ -12,6 +12,7 @@ using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
+using Application = System.Windows.Application;
 
 namespace IvanovItog.App.ViewModels;
 
