@@ -44,14 +44,24 @@ public class AnalyticsService : IAnalyticsService
             .Select(u => new { u.Id, u.DisplayName })
             .ToListAsync(cancellationToken);
 
-        var loadLookup = await _dbContext.Requests
+        var activeLookup = await _dbContext.Requests
             .Where(r => r.AssignedToId != null && r.CreatedAt >= from && r.CreatedAt <= to && r.ClosedAt == null)
             .GroupBy(r => r.AssignedToId!.Value)
             .Select(g => new { TechnicianId = g.Key, Active = g.Count() })
             .ToDictionaryAsync(x => x.TechnicianId, x => x.Active, cancellationToken);
 
+        var closedLookup = await _dbContext.Requests
+            .Where(r => r.AssignedToId != null && r.CreatedAt >= from && r.CreatedAt <= to && r.ClosedAt != null)
+            .GroupBy(r => r.AssignedToId!.Value)
+            .Select(g => new { TechnicianId = g.Key, Closed = g.Count() })
+            .ToDictionaryAsync(x => x.TechnicianId, x => x.Closed, cancellationToken);
+
         return technicians
-            .Select(t => new TechnicianLoadDto(t.Id, t.DisplayName, loadLookup.TryGetValue(t.Id, out var count) ? count : 0))
+            .Select(t => new TechnicianLoadDto(
+                t.Id,
+                t.DisplayName,
+                activeLookup.TryGetValue(t.Id, out var active) ? active : 0,
+                closedLookup.TryGetValue(t.Id, out var closed) ? closed : 0))
             .ToList();
     }
 }
