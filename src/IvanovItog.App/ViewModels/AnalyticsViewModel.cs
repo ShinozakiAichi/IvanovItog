@@ -105,4 +105,9 @@ public partial class AnalyticsViewModel : ObservableObject
             IsBusy = false;
         }
     }
+
+    partial void OnIsBusyChanged(bool value)
+    {
+        LoadCommand.NotifyCanExecuteChanged();
+    }
 }
