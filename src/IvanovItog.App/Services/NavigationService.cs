@@ -16,6 +16,7 @@ public class NavigationService
 
     public void Navigate<TView, TViewModel>()
         where TView : Window
+        where TViewModel : notnull
     {
         var previousWindow = _currentWindow;
         previousWindow?.Hide();

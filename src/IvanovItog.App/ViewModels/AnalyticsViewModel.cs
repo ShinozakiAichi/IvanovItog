@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Interfaces;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
