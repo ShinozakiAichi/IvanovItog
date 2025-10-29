@@ -20,7 +20,7 @@ public static class SeedData
 
     public static async Task InitializeAsync(AppDbContext context, CancellationToken cancellationToken = default)
     {
-        var migrations = await context.Database.GetMigrationsAsync(cancellationToken);
+        var migrations = context.Database.GetMigrations();
 
         if (migrations.Any())
         {
