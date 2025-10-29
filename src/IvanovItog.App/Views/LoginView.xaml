@@ -3,56 +3,101 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Login_Title}"
-        Height="320"
-        Width="420"
-        MinHeight="320"
-        MinWidth="360"
-        MaxHeight="480"
-        MaxWidth="600"
+        Height="420"
+        Width="760"
+        MinHeight="380"
+        MinWidth="640"
+        MaxHeight="540"
+        MaxWidth="900"
         WindowStartupLocation="CenterScreen">
-    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-        <Border Margin="24"
-                Padding="24"
-                CornerRadius="12"
+    <Grid Background="#F4F6FB">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Margin="32"
+                CornerRadius="20"
+                Padding="36"
+                Background="#1B4F8C">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="IvanovItog"
+                           Foreground="White"
+                           FontSize="28"
+                           FontWeight="Bold" />
+                <TextBlock Text="Система управления заявками"
+                           Foreground="#E5ECF7"
+                           FontSize="16"
+                           Margin="0,12,0,24" />
+                <TextBlock Text="Следите за заявками, распределяйте задачи и контролируйте качество обслуживания в едином окне."
+                           Foreground="#C9D8F0"
+                           TextWrapping="Wrap"
+                           FontSize="14" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1"
+                Margin="32"
+                Padding="40"
                 Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                MaxWidth="360">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <TextBlock Text="Вход"
-                           FontSize="22"
+                CornerRadius="20"
+                BorderBrush="#E0E6F2"
+                BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Добро пожаловать"
+                           FontSize="24"
                            FontWeight="Bold"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,12" />
-                <StackPanel Grid.Row="1"
-                            Margin="0,0,0,12">
-                    <StackPanel Margin="0,0,0,12">
-                        <TextBlock Text="Логин" FontWeight="SemiBold" />
-                        <TextBox Margin="0,6,0,0"
-                                 MinHeight="32"
-                                 Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
-                                 ToolTip="Введите логин" />
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="Пароль" FontWeight="SemiBold" />
-                        <PasswordBox Margin="0,6,0,0"
-                                     MinHeight="32"
-                                     x:Name="PasswordBox"
-                                     PasswordChanged="OnPasswordChanged" />
-                    </StackPanel>
+                           Foreground="#1B4F8C" />
+                <TextBlock Text="Введите свои учётные данные, чтобы продолжить работу"
+                           Margin="0,6,0,24"
+                           Foreground="#6B7280" />
+
+                <StackPanel Margin="0,0,0,16">
+                    <TextBlock Text="Логин"
+                               FontWeight="SemiBold"
+                               Foreground="#111827" />
+                    <TextBox Margin="0,6,0,0"
+                             Height="40"
+                             Padding="10"
+                             Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
+                             ToolTip="Введите логин" />
                 </StackPanel>
-                <Button Grid.Row="2"
-                        Content="Войти"
-                        Command="{Binding LoginCommand}"
-                        Height="40"
-                        Margin="0,4,0,0"
-                        FontWeight="SemiBold" />
-            </Grid>
+
+                <StackPanel Margin="0,0,0,24">
+                    <TextBlock Text="Пароль"
+                               FontWeight="SemiBold"
+                               Foreground="#111827" />
+                    <PasswordBox x:Name="PasswordBox"
+                                 Margin="0,6,0,0"
+                                 Height="40"
+                                 Padding="10"
+                                 PasswordChanged="OnPasswordChanged" />
+                </StackPanel>
+
+                <Button Content="Войти"
+                        Height="44"
+                        FontWeight="SemiBold"
+                        Command="{Binding LoginCommand}" />
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="0,24,0,0">
+                    <TextBlock Text="Нет аккаунта?"
+                               Foreground="#6B7280" />
+                    <Button Content="Создать"
+                            Command="{Binding OpenRegistrationCommand}"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            FocusVisualStyle="{x:Null}"
+                            Foreground="#1B4F8C"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"
+                            Padding="0"
+                            Margin="6,0,0,0" />
+                </StackPanel>
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

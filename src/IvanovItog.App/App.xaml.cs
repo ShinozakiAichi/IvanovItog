@@ -49,6 +49,9 @@ public partial class App : System.Windows.Application
                 services.AddTransient<AnalyticsViewModel>();
                 services.AddTransient<SettingsViewModel>();
                 services.AddTransient<RequestEditorViewModel>();
+                services.AddTransient<RegistrationViewModel>();
+                services.AddTransient<UserManagementViewModel>();
+                services.AddTransient<UserEditorViewModel>();
 
                 services.AddTransient<LoginView>();
                 services.AddTransient<RequestsView>();
@@ -56,6 +59,9 @@ public partial class App : System.Windows.Application
                 services.AddTransient<AnalyticsView>();
                 services.AddTransient<SettingsView>();
                 services.AddTransient<RequestEditorView>();
+                services.AddTransient<RegistrationView>();
+                services.AddTransient<UserManagementView>();
+                services.AddTransient<UserEditorView>();
             })
             .Build();
 

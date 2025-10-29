@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.App.Services;
 using IvanovItog.Domain.Interfaces;
+using Application = System.Windows.Application;
 
 namespace IvanovItog.App.ViewModels;
 
@@ -12,6 +13,7 @@ public partial class LoginViewModel : ObservableObject
     private readonly NavigationService _navigationService;
     private readonly DialogService _dialogService;
     private readonly SessionContext _sessionContext;
+    private readonly IServiceProvider _serviceProvider;
 
     public event EventHandler? RequestPasswordClear;
 
@@ -25,14 +27,17 @@ public partial class LoginViewModel : ObservableObject
     private bool _isBusy;
 
     public IAsyncRelayCommand LoginCommand { get; }
+    public IRelayCommand OpenRegistrationCommand { get; }
 
-    public LoginViewModel(IAuthService authService, NavigationService navigationService, DialogService dialogService, SessionContext sessionContext)
+    public LoginViewModel(IAuthService authService, NavigationService navigationService, DialogService dialogService, SessionContext sessionContext, IServiceProvider serviceProvider)
     {
         _authService = authService;
         _navigationService = navigationService;
         _dialogService = dialogService;
         _sessionContext = sessionContext;
+        _serviceProvider = serviceProvider;
         LoginCommand = new AsyncRelayCommand(ExecuteLoginAsync, () => !IsBusy);
+        OpenRegistrationCommand = new RelayCommand(OpenRegistration);
     }
 
     partial void OnIsBusyChanged(bool value)
@@ -70,5 +75,14 @@ public partial class LoginViewModel : ObservableObject
             RequestPasswordClear?.Invoke(this, EventArgs.Empty);
             IsBusy = false;
         }
+    }
+
+    private void OpenRegistration()
+    {
+        var view = _serviceProvider.GetRequiredService<Views.RegistrationView>();
+        var vm = _serviceProvider.GetRequiredService<RegistrationViewModel>();
+        view.DataContext = vm;
+        view.Owner = Application.Current?.MainWindow;
+        view.ShowDialog();
     }
 }

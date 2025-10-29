@@ -11,6 +11,9 @@
         MaxWidth="1600"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Window.Resources>
     <DockPanel LastChildFill="True">
         <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
             <ToolBar>
@@ -27,6 +30,9 @@
                 <Separator />
                 <Button Content="Рейтинг" Command="{Binding OpenRatingCommand}" />
                 <Button Content="Аналитика" Command="{Binding OpenAnalyticsCommand}" />
+                <Button Content="Пользователи"
+                        Command="{Binding OpenUserManagementCommand}"
+                        Visibility="{Binding CanManageUsers, Converter={StaticResource BoolToVisibilityConverter}}" />
                 <Button Content="Настройки" Command="{Binding OpenSettingsCommand}" />
                 <Separator />
                 <Button Content="Выход" Command="{Binding LogoutCommand}" />

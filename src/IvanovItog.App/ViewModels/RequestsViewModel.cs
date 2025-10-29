@@ -53,6 +53,9 @@ public partial class RequestsViewModel : ObservableObject
     [ObservableProperty]
     private bool _isBusy;
 
+    [ObservableProperty]
+    private bool _canManageUsers;
+
     public IReadOnlyCollection<Priority> Priorities { get; private set; } = Array.Empty<Priority>();
 
     public IAsyncRelayCommand InitializeCommand { get; }
@@ -68,6 +71,7 @@ public partial class RequestsViewModel : ObservableObject
     public IRelayCommand OpenRatingCommand { get; }
     public IRelayCommand OpenAnalyticsCommand { get; }
     public IRelayCommand OpenSettingsCommand { get; }
+    public IRelayCommand OpenUserManagementCommand { get; }
 
     public RequestsViewModel(
         IRequestService requestService,
@@ -99,6 +103,7 @@ public partial class RequestsViewModel : ObservableObject
         OpenRatingCommand = new RelayCommand(OpenRating);
         OpenAnalyticsCommand = new RelayCommand(OpenAnalytics);
         OpenSettingsCommand = new RelayCommand(OpenSettings);
+        OpenUserManagementCommand = new RelayCommand(OpenUserManagement, () => CanManageUsers);
     }
 
     partial void OnSelectedRequestChanged(Request? value)
@@ -120,6 +125,11 @@ public partial class RequestsViewModel : ObservableObject
         DeleteRequestCommand.NotifyCanExecuteChanged();
     }
 
+    partial void OnCanManageUsersChanged(bool value)
+    {
+        OpenUserManagementCommand.NotifyCanExecuteChanged();
+    }
+
     private bool CanModifyRequest() => SelectedRequest is not null && !IsBusy;
 
     private async Task InitializeAsync()
@@ -134,6 +144,7 @@ public partial class RequestsViewModel : ObservableObject
             IsBusy = true;
             await LoadLookupsAsync();
             await LoadRequestsAsync();
+            CanManageUsers = _sessionContext.CurrentUser?.Role == Role.Admin;
         }
         finally
         {
@@ -404,6 +415,20 @@ public partial class RequestsViewModel : ObservableObject
     {
         var view = _serviceProvider.GetRequiredService<SettingsView>();
         view.DataContext = _serviceProvider.GetRequiredService<SettingsViewModel>();
+        view.Owner = Application.Current.MainWindow;
+        view.ShowDialog();
+    }
+
+    private void OpenUserManagement()
+    {
+        if (!CanManageUsers)
+        {
+            _dialogService.ShowError("Недостаточно прав");
+            return;
+        }
+
+        var view = _serviceProvider.GetRequiredService<UserManagementView>();
+        view.DataContext = _serviceProvider.GetRequiredService<UserManagementViewModel>();
         view.Owner = Application.Current.MainWindow;
         view.ShowDialog();
     }
