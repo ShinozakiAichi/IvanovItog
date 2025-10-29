@@ -4,32 +4,73 @@
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Analytics_Title}"
-        Height="600"
-        Width="900"
+        Height="640"
+        Width="1040"
+        MinHeight="620"
+        MinWidth="960"
+        MaxHeight="900"
+        MaxWidth="1600"
         Loaded="OnLoaded"
-        WindowStartupLocation="CenterOwner">
-    <Grid Margin="10">
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <DatePicker Margin="0,0,10,0" SelectedDate="{Binding From}" />
-            <DatePicker Margin="0,0,10,0" SelectedDate="{Binding To}" />
-            <Button Content="Обновить" Command="{Binding LoadCommand}" />
-        </StackPanel>
-        <Grid Grid.Row="1" Margin="0,10,0,10">
+        <Border Padding="16"
+                CornerRadius="8"
+                BorderBrush="#FFD0D7E2"
+                BorderThickness="1"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                Margin="0,0,0,16">
+            <StackPanel Orientation="Horizontal" Spacing="12">
+                <StackPanel Width="180">
+                    <TextBlock Text="Дата с" />
+                    <DatePicker Margin="0,6,0,0" SelectedDate="{Binding From}" />
+                </StackPanel>
+                <StackPanel Width="180">
+                    <TextBlock Text="Дата по" />
+                    <DatePicker Margin="0,6,0,0" SelectedDate="{Binding To}" />
+                </StackPanel>
+                <Button Content="Обновить"
+                        Width="140"
+                        Margin="0,22,0,0"
+                        Height="36"
+                        Command="{Binding LoadCommand}" />
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <lvc:PieChart Series="{Binding StatusSeries}" LegendPosition="Right" />
-            <lvc:CartesianChart Grid.Column="1"
-                                 Margin="10,0,0,0"
-                                 Series="{Binding TimelineSeries}"
-                                 XAxes="{Binding TimelineXAxis}" />
+            <Border Padding="12"
+                    CornerRadius="8"
+                    BorderBrush="#FFE0E6F0"
+                    BorderThickness="1"
+                    Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                    Margin="0,0,8,0">
+                <lvc:PieChart Series="{Binding StatusSeries}" LegendPosition="Right" />
+            </Border>
+            <Border Grid.Column="1"
+                    Padding="12"
+                    CornerRadius="8"
+                    BorderBrush="#FFE0E6F0"
+                    BorderThickness="1"
+                    Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                    Margin="8,0,0,0">
+                <lvc:CartesianChart Series="{Binding TimelineSeries}" XAxes="{Binding TimelineXAxis}" />
+            </Border>
         </Grid>
-        <lvc:CartesianChart Grid.Row="2" Margin="0,10,0,0" Series="{Binding LoadSeries}" XAxes="{Binding LoadXAxis}" />
+        <Border Grid.Row="2"
+                Padding="12"
+                CornerRadius="8"
+                BorderBrush="#FFE0E6F0"
+                BorderThickness="1"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                Margin="0,16,0,0">
+            <lvc:CartesianChart Series="{Binding LoadSeries}" XAxes="{Binding LoadXAxis}" />
+        </Border>
     </Grid>
 </Window>
