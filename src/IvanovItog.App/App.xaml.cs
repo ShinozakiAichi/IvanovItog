@@ -4,6 +4,7 @@ using System.Windows;
 using IvanovItog.App.Services;
 using IvanovItog.App.ViewModels;
 using IvanovItog.App.Views;
+using IvanovItog.Domain.Interfaces;
 using IvanovItog.Infrastructure;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
@@ -36,6 +37,13 @@ public partial class App : System.Windows.Application
             {
                 var connectionString = BuildSqliteConnectionString(context.Configuration.GetConnectionString("Default"));
                 services.AddInfrastructure(connectionString, Log.Logger);
+
+                var databasePath = new SqliteConnectionStringBuilder(connectionString).DataSource;
+                if (!File.Exists(databasePath))
+                {
+                    services.AddSingleton<IAnalyticsService, FakeAnalyticsService>();
+                    Log.Information("Database not found at {DatabasePath}. Using FakeAnalyticsService for analytics data.", databasePath);
+                }
 
                 services.AddSingleton<NavigationService>();
                 services.AddSingleton<DialogService>();

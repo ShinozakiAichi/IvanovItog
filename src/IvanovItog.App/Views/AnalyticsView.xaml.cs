@@ -1,20 +1,32 @@
+using System;
 using System.Windows;
+using IvanovItog.App.ViewModels;
 
 namespace IvanovItog.App.Views;
 
 public partial class AnalyticsView : Window
 {
-    public AnalyticsView()
+    private readonly AnalyticsViewModel _viewModel;
+
+    public AnalyticsView(AnalyticsViewModel viewModel)
     {
         InitializeComponent();
-        DataContextChanged += OnDataContextChanged;
+        _viewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
+        DataContext = _viewModel;
+        Loaded += OnLoaded;
     }
 
-    private async void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (e.NewValue is ViewModels.AnalyticsViewModel viewModel)
+        Loaded -= OnLoaded;
+
+        try
         {
-            await viewModel.LoadCommand.ExecuteAsync(null);
+            await _viewModel.LoadCommand.ExecuteAsync(null);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(this, $"Не удалось загрузить аналитику: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }
