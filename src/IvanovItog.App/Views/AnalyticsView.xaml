@@ -10,7 +10,6 @@
         MinWidth="960"
         MaxHeight="900"
         MaxWidth="1600"
-        Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="16">
         <Grid.RowDefinitions>
