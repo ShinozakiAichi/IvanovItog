@@ -114,18 +114,61 @@
                         <Setter Property="MinHeight" Value="36" />
                         <Setter Property="Padding" Value="4" />
                     </Style>
+                    <Style x:Key="WrapTextCellStyle" TargetType="TextBlock">
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                    </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="60" />
-                    <DataGridTextColumn Binding="{Binding Title}" Header="Название" Width="220" />
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="260" />
-                    <DataGridTextColumn Binding="{Binding Category.Name}" Header="Категория" Width="140" />
-                    <DataGridTextColumn Binding="{Binding Priority}" Header="Приоритет" Width="120" />
-                    <DataGridTextColumn Binding="{Binding Status.Name}" Header="Статус" Width="140" />
-                    <DataGridTextColumn Binding="{Binding CreatedBy.DisplayName}" Header="Автор" Width="160" />
-                    <DataGridTextColumn Binding="{Binding AssignedTo.DisplayName}" Header="Исполнитель" Width="160" />
-                    <DataGridTextColumn Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Создана" Width="160" />
-                    <DataGridTextColumn Binding="{Binding ClosedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Закрыта" Width="160" />
+                    <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="60">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Title}" Header="Название" Width="220">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="260">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Category.Name}" Header="Категория" Width="140">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Priority}" Header="Приоритет" Width="120">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding Status.Name}" Header="Статус" Width="140">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding CreatedBy.DisplayName}" Header="Автор" Width="160">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding AssignedTo.DisplayName}" Header="Исполнитель" Width="160">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Создана" Width="160">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Binding="{Binding ClosedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Закрыта" Width="160">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style BasedOn="{StaticResource WrapTextCellStyle}" TargetType="TextBlock" />
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
