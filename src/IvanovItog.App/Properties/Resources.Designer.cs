@@ -65,6 +65,8 @@ namespace IvanovItog.App.Properties
 
         public static string AppTitle => ResourceManager.GetString("AppTitle", resourceCulture) ?? string.Empty;
 
+        public static string MainHeader => ResourceManager.GetString("MainHeader", resourceCulture) ?? string.Empty;
+
         public static string Settings_Title => ResourceManager.GetString("Settings_Title", resourceCulture) ?? string.Empty;
     }
 }

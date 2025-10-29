@@ -60,7 +60,7 @@ public partial class AnalyticsViewModel : ObservableObject
             {
                 StatusSeries.Add(new PieSeries<int>
                 {
-                    Values = new[] { status.Count },
+                    Values = new int[] { status.Count },
                     Name = status.Status,
                     DataLabelsPaint = new SolidColorPaint(SKColors.Black),
                     DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer
@@ -74,11 +74,11 @@ public partial class AnalyticsViewModel : ObservableObject
                 GeometrySize = 8,
                 Fill = null
             });
-            TimelineXAxis = new[]
+            TimelineXAxis = new Axis[]
             {
                 new Axis
                 {
-                    Labels = timelinePoints.Select(p => p.Date.ToString("dd.MM")),
+                    Labels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList(),
                     LabelsRotation = 15
                 }
             };
@@ -90,11 +90,11 @@ public partial class AnalyticsViewModel : ObservableObject
                 Values = loads.Select(l => l.ActiveRequests).ToArray(),
                 Name = "Активные"
             });
-            LoadXAxis = new[]
+            LoadXAxis = new Axis[]
             {
                 new Axis
                 {
-                    Labels = loads.Select(l => l.TechnicianName).ToArray(),
+                    Labels = loads.Select(l => l.TechnicianName).ToList(),
                     LabelsRotation = 15
                 }
             };

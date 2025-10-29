@@ -33,4 +33,7 @@
   <data name="AppTitle" xml:space="preserve">
     <value>IvanovItog — система заявок</value>
   </data>
+  <data name="MainHeader" xml:space="preserve">
+    <value>Добро пожаловать в IvanovItog</value>
+  </data>
 </root>
