@@ -3,55 +3,123 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Requests_Title}"
-        Height="600"
-        Width="900"
+        Height="640"
+        Width="1040"
+        MinHeight="600"
+        MinWidth="960"
+        MaxHeight="900"
+        MaxWidth="1600"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
-    <DockPanel>
-        <ToolBar DockPanel.Dock="Top">
-            <Button Content="Обновить" Command="{Binding RefreshCommand}" />
-            <Button Content="Очистить фильтры" Command="{Binding ClearFiltersCommand}" />
-            <Button Content="Новая заявка" Command="{Binding CreateRequestCommand}" />
-            <Button Content="Редактировать" Command="{Binding EditRequestCommand}" />
-            <Button Content="Удалить" Command="{Binding DeleteRequestCommand}" />
-            <Button Content="Назначить мне" Command="{Binding AssignToMeCommand}" />
-            <Button Content="Закрыть" Command="{Binding CloseRequestCommand}" />
-            <Button Content="Экспорт" Command="{Binding ExportCommand}" />
-            <Separator />
-            <Button Content="Рейтинг" Command="{Binding OpenRatingCommand}" />
-            <Button Content="Аналитика" Command="{Binding OpenAnalyticsCommand}" />
-            <Button Content="Настройки" Command="{Binding OpenSettingsCommand}" />
-            <Separator />
-            <Button Content="Выход" Command="{Binding LogoutCommand}" />
-        </ToolBar>
-        <Grid Margin="10">
+    <DockPanel LastChildFill="True">
+        <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
+            <ToolBar>
+                <Button Content="Обновить" Command="{Binding RefreshCommand}" />
+                <Button Content="Очистить фильтры" Command="{Binding ClearFiltersCommand}" />
+                <Separator />
+                <Button Content="Новая заявка" Command="{Binding CreateRequestCommand}" />
+                <Button Content="Редактировать" Command="{Binding EditRequestCommand}" />
+                <Button Content="Удалить" Command="{Binding DeleteRequestCommand}" />
+                <Separator />
+                <Button Content="Назначить мне" Command="{Binding AssignToMeCommand}" />
+                <Button Content="Закрыть" Command="{Binding CloseRequestCommand}" />
+                <Button Content="Экспорт" Command="{Binding ExportCommand}" />
+                <Separator />
+                <Button Content="Рейтинг" Command="{Binding OpenRatingCommand}" />
+                <Button Content="Аналитика" Command="{Binding OpenAnalyticsCommand}" />
+                <Button Content="Настройки" Command="{Binding OpenSettingsCommand}" />
+                <Separator />
+                <Button Content="Выход" Command="{Binding LogoutCommand}" />
+            </ToolBar>
+        </ToolBarTray>
+        <Grid Margin="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedCategoryId}" />
-                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Statuses}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedStatusId}" />
-                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Priorities}" SelectedItem="{Binding SelectedPriority}" />
-                <DatePicker Margin="0,0,10,0" SelectedDate="{Binding CreatedFrom}" Width="140" />
-                <DatePicker Margin="0,0,10,0" SelectedDate="{Binding CreatedTo}" Width="140" />
-                <TextBox Width="200" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
+            <Border Padding="16"
+                    CornerRadius="8"
+                    BorderBrush="#FFD0D7E2"
+                    BorderThickness="1"
+                    Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                    Margin="0,0,0,16">
+                <StackPanel>
+                    <TextBlock Text="Фильтры"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,12" />
+                    <WrapPanel ItemHeight="72"
+                               ItemWidth="220"
+                               MinWidth="400"
+                               VerticalAlignment="Center"
+                               Margin="0,0,0,8">
+                        <StackPanel Width="200">
+                            <TextBlock Text="Категория" />
+                            <ComboBox Margin="0,6,0,0"
+                                      ItemsSource="{Binding Categories}"
+                                      DisplayMemberPath="Name"
+                                      SelectedValuePath="Id"
+                                      SelectedValue="{Binding SelectedCategoryId}" />
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock Text="Статус" />
+                            <ComboBox Margin="0,6,0,0"
+                                      ItemsSource="{Binding Statuses}"
+                                      DisplayMemberPath="Name"
+                                      SelectedValuePath="Id"
+                                      SelectedValue="{Binding SelectedStatusId}" />
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock Text="Приоритет" />
+                            <ComboBox Margin="0,6,0,0"
+                                      ItemsSource="{Binding Priorities}"
+                                      SelectedItem="{Binding SelectedPriority}" />
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock Text="С" />
+                            <DatePicker Margin="0,6,0,0"
+                                        SelectedDate="{Binding CreatedFrom}" />
+                        </StackPanel>
+                        <StackPanel Width="200">
+                            <TextBlock Text="По" />
+                            <DatePicker Margin="0,6,0,0"
+                                        SelectedDate="{Binding CreatedTo}" />
+                        </StackPanel>
+                        <StackPanel Width="220">
+                            <TextBlock Text="Поиск" />
+                            <TextBox Margin="0,6,0,0"
+                                     Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                                     ToolTip="Поиск по названию или описанию" />
+                        </StackPanel>
+                    </WrapPanel>
+                </StackPanel>
+            </Border>
             <DataGrid Grid.Row="1"
-                      Margin="0,10,0,0"
                       ItemsSource="{Binding Requests}"
                       SelectedItem="{Binding SelectedRequest, Mode=TwoWay}"
                       AutoGenerateColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      AlternationCount="2"
+                      GridLinesVisibility="Horizontal"
+                      HeadersVisibility="Column">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="MinHeight" Value="36" />
+                        <Setter Property="Padding" Value="4" />
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="ID" Width="60" />
-                    <DataGridTextColumn Binding="{Binding Title}" Header="Название" Width="200" />
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="200" />
-                    <DataGridTextColumn Binding="{Binding Category.Name}" Header="Категория" Width="120" />
-                    <DataGridTextColumn Binding="{Binding Priority}" Header="Приоритет" Width="100" />
-                    <DataGridTextColumn Binding="{Binding Status.Name}" Header="Статус" Width="120" />
-                    <DataGridTextColumn Binding="{Binding CreatedAt}" Header="Создана" Width="150" />
-                    <DataGridTextColumn Binding="{Binding ClosedAt}" Header="Закрыта" Width="150" />
+                    <DataGridTextColumn Binding="{Binding Title}" Header="Название" Width="220" />
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="260" />
+                    <DataGridTextColumn Binding="{Binding Category.Name}" Header="Категория" Width="140" />
+                    <DataGridTextColumn Binding="{Binding Priority}" Header="Приоритет" Width="120" />
+                    <DataGridTextColumn Binding="{Binding Status.Name}" Header="Статус" Width="140" />
+                    <DataGridTextColumn Binding="{Binding CreatedBy.DisplayName}" Header="Автор" Width="160" />
+                    <DataGridTextColumn Binding="{Binding AssignedTo.DisplayName}" Header="Исполнитель" Width="160" />
+                    <DataGridTextColumn Binding="{Binding CreatedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Создана" Width="160" />
+                    <DataGridTextColumn Binding="{Binding ClosedAt, StringFormat=\{0:dd.MM.yyyy HH:mm\}}" Header="Закрыта" Width="160" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

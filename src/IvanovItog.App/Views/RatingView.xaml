@@ -3,30 +3,67 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Rating_Title}"
-        Height="500"
-        Width="700"
+        Height="560"
+        Width="820"
+        MinHeight="520"
+        MinWidth="720"
+        MaxHeight="800"
+        MaxWidth="1200"
         Loaded="OnLoaded"
-        WindowStartupLocation="CenterOwner">
-    <DockPanel Margin="10">
-        <ListBox DockPanel.Dock="Top" ItemsSource="{Binding TopThreeMedals}" Height="100">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Medal}" FontSize="18" />
-                        <TextBlock Margin="10,0,0,0" Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
-                        <TextBlock Margin="10,0,0,0" Text="{Binding Technician.Score}" Foreground="Gray" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <DataGrid ItemsSource="{Binding Ratings}" AutoGenerateColumns="False" IsReadOnly="True">
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Padding="16"
+                CornerRadius="8"
+                BorderBrush="#FFD0D7E2"
+                BorderThickness="1"
+                Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+                Margin="0,0,0,16">
+            <StackPanel>
+                <TextBlock Text="Лидеры недели"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,12" />
+                <ListBox ItemsSource="{Binding TopThreeMedals}"
+                         HorizontalAlignment="Stretch"
+                         BorderThickness="0"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Spacing="12">
+                                <TextBlock Text="{Binding Medal}" FontSize="20" />
+                                <TextBlock Text="{Binding Technician.TechnicianName}" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Technician.Score}" Foreground="Gray" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Border>
+        <DataGrid Grid.Row="1"
+                  ItemsSource="{Binding Ratings}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  AlternationCount="2"
+                  GridLinesVisibility="Horizontal"
+                  HeadersVisibility="Column">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="MinHeight" Value="32" />
+                    <Setter Property="Padding" Value="4" />
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Техник" Binding="{Binding TechnicianName}" Width="*" />
-                <DataGridTextColumn Header="Закрыто" Binding="{Binding ClosedCount}" Width="100" />
-                <DataGridTextColumn Header="Просрочки" Binding="{Binding OverdueCount}" Width="100" />
-                <DataGridTextColumn Header="Высокий приоритет" Binding="{Binding HighPriorityCount}" Width="150" />
-                <DataGridTextColumn Header="Баллы" Binding="{Binding Score}" Width="100" />
+                <DataGridTextColumn Header="Закрыто" Binding="{Binding ClosedCount}" Width="120" />
+                <DataGridTextColumn Header="Просрочки" Binding="{Binding OverdueCount}" Width="140" />
+                <DataGridTextColumn Header="Высокий приоритет" Binding="{Binding HighPriorityCount}" Width="180" />
+                <DataGridTextColumn Header="Баллы" Binding="{Binding Score}" Width="120" />
             </DataGrid.Columns>
         </DataGrid>
-    </DockPanel>
+    </Grid>
 </Window>
