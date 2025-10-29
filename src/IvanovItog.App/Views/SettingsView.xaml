@@ -7,22 +7,22 @@
         Width="500"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterOwner">
-    <Grid Margin="20" RowSpacing="15">
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Spacing="10">
+        <StackPanel Orientation="Horizontal">
             <TextBlock Text="Тема" VerticalAlignment="Center" />
-            <ComboBox Width="150" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}" />
+            <ComboBox Margin="10,0,0,0" Width="150" ItemsSource="{Binding Themes}" SelectedItem="{Binding SelectedTheme}" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+        <StackPanel Grid.Row="1" Margin="0,15,0,0" Orientation="Horizontal">
             <TextBlock Text="Вложения" VerticalAlignment="Center" />
-            <TextBox Width="300" Text="{Binding AttachmentsPath}" />
+            <TextBox Margin="10,0,0,0" Width="300" Text="{Binding AttachmentsPath}" />
         </StackPanel>
-        <CheckBox Grid.Row="2" Content="Уведомления" IsChecked="{Binding NotificationsEnabled}" />
-        <Button Grid.Row="3" Content="Сохранить" Command="{Binding SaveCommand}" Width="120" HorizontalAlignment="Left" />
+        <CheckBox Grid.Row="2" Margin="0,15,0,0" Content="Уведомления" IsChecked="{Binding NotificationsEnabled}" />
+        <Button Grid.Row="3" Margin="0,15,0,0" Content="Сохранить" Command="{Binding SaveCommand}" Width="120" HorizontalAlignment="Left" />
     </Grid>
 </Window>

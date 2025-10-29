@@ -29,12 +29,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" Spacing="10">
-                <ComboBox Width="150" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedCategoryId}" />
-                <ComboBox Width="150" ItemsSource="{Binding Statuses}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedStatusId}" />
-                <ComboBox Width="150" ItemsSource="{Binding Priorities}" SelectedItem="{Binding SelectedPriority}" />
-                <DatePicker SelectedDate="{Binding CreatedFrom}" Width="140" />
-                <DatePicker SelectedDate="{Binding CreatedTo}" Width="140" />
+            <StackPanel Orientation="Horizontal">
+                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedCategoryId}" />
+                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Statuses}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedStatusId}" />
+                <ComboBox Width="150" Margin="0,0,10,0" ItemsSource="{Binding Priorities}" SelectedItem="{Binding SelectedPriority}" />
+                <DatePicker Margin="0,0,10,0" SelectedDate="{Binding CreatedFrom}" Width="140" />
+                <DatePicker Margin="0,0,10,0" SelectedDate="{Binding CreatedTo}" Width="140" />
                 <TextBox Width="200" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <DataGrid Grid.Row="1"
