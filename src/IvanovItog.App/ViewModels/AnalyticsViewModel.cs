@@ -24,10 +24,10 @@ public partial class AnalyticsViewModel : ObservableObject
     public Axis[] LoadXAxis { get; private set; } = Array.Empty<Axis>();
 
     [ObservableProperty]
-    private DateTime _from = DateTime.SpecifyKind(DateTime.UtcNow.Date.AddDays(-30), DateTimeKind.Unspecified);
+    private DateTime _from = DateTime.Today.AddDays(-30);
 
     [ObservableProperty]
-    private DateTime _to = DateTime.SpecifyKind(DateTime.UtcNow.Date, DateTimeKind.Unspecified);
+    private DateTime _to = DateTime.Today;
 
     [ObservableProperty]
     private bool _isBusy;
@@ -53,7 +53,7 @@ public partial class AnalyticsViewModel : ObservableObject
 
             ClearSeries();
 
-            var (fromUtc, toUtc, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
+            var (fromLocal, toLocal, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
             if (From != normalizedFrom)
             {
                 From = normalizedFrom;
@@ -64,7 +64,7 @@ public partial class AnalyticsViewModel : ObservableObject
                 To = normalizedTo;
             }
 
-            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(fromUtc, toUtc)).OrderBy(p => p.Date).ToList();
+            var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(fromLocal, toLocal)).OrderBy(p => p.Date).ToList();
 
             if (!timelinePoints.Any())
             {
@@ -74,8 +74,8 @@ public partial class AnalyticsViewModel : ObservableObject
 
                 if (fallbackTimeline.Any())
                 {
-                    var fallbackFrom = DateTime.SpecifyKind(fallbackTimeline.First().Date.Date, DateTimeKind.Unspecified);
-                    var fallbackTo = DateTime.SpecifyKind(fallbackTimeline.Last().Date.Date, DateTimeKind.Unspecified);
+                    var fallbackFrom = fallbackTimeline.First().Date.Date;
+                    var fallbackTo = fallbackTimeline.Last().Date.Date;
 
                     if (From != fallbackFrom)
                     {
@@ -87,7 +87,7 @@ public partial class AnalyticsViewModel : ObservableObject
                         To = fallbackTo;
                     }
 
-                    (fromUtc, toUtc, _, _) = NormalizeRange(From, To);
+                    (fromLocal, toLocal, _, _) = NormalizeRange(From, To);
                     timelinePoints = fallbackTimeline;
                 }
             }
@@ -117,7 +117,10 @@ public partial class AnalyticsViewModel : ObservableObject
 
             OnPropertyChanged(nameof(TimelineXAxis));
 
-            var statusData = await _analyticsService.GetRequestsByStatusAsync(fromUtc, toUtc);
+            Console.WriteLine($"TimelinePoints: {timelinePoints.Count}");
+
+            var statusData = (await _analyticsService.GetRequestsByStatusAsync(fromLocal, toLocal)).ToList();
+            Console.WriteLine($"StatusData: {statusData.Count}");
             foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>
@@ -129,7 +132,8 @@ public partial class AnalyticsViewModel : ObservableObject
                 });
             }
 
-            var loads = await _analyticsService.GetTechnicianLoadAsync(fromUtc, toUtc);
+            var loads = (await _analyticsService.GetTechnicianLoadAsync(fromLocal, toLocal)).ToList();
+            Console.WriteLine($"Loads: {loads.Count}");
             if (loads.Any())
             {
                 LoadSeries.Add(new ColumnSeries<int>
@@ -185,19 +189,19 @@ public partial class AnalyticsViewModel : ObservableObject
         OnPropertyChanged(nameof(LoadXAxis));
     }
 
-    private static (DateTime fromUtc, DateTime toUtc, DateTime normalizedFrom, DateTime normalizedTo) NormalizeRange(DateTime from, DateTime to)
+    private static (DateTime fromLocal, DateTime toLocal, DateTime normalizedFrom, DateTime normalizedTo) NormalizeRange(DateTime from, DateTime to)
     {
-        var normalizedFrom = DateTime.SpecifyKind(from.Date, DateTimeKind.Unspecified);
-        var normalizedTo = DateTime.SpecifyKind(to.Date, DateTimeKind.Unspecified);
+        var normalizedFrom = from.Date;
+        var normalizedTo = to.Date;
 
         if (normalizedFrom > normalizedTo)
         {
             (normalizedFrom, normalizedTo) = (normalizedTo, normalizedFrom);
         }
 
-        var fromUtc = DateTime.SpecifyKind(normalizedFrom, DateTimeKind.Utc);
-        var toUtc = DateTime.SpecifyKind(normalizedTo.AddDays(1).AddTicks(-1), DateTimeKind.Utc);
+        var fromLocal = normalizedFrom;
+        var toLocal = normalizedTo.AddDays(1).AddTicks(-1);
 
-        return (fromUtc, toUtc, normalizedFrom, normalizedTo);
+        return (fromLocal, toLocal, normalizedFrom, normalizedTo);
     }
 }
