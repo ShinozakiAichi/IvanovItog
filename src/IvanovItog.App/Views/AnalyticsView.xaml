@@ -51,7 +51,12 @@
                     BorderThickness="1"
                     Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                     Margin="0,0,8,0">
-                <lvc:PieChart Series="{Binding StatusSeries}" LegendPosition="Right" />
+                <StackPanel>
+                    <TextBlock Text="Распределение по статусам"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8" />
+                    <lvc:PieChart Series="{Binding StatusSeries}" LegendPosition="Right" />
+                </StackPanel>
             </Border>
             <Border Grid.Column="1"
                     Padding="12"
@@ -60,7 +65,12 @@
                     BorderThickness="1"
                     Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                     Margin="8,0,0,0">
-                <lvc:CartesianChart Series="{Binding TimelineSeries}" XAxes="{Binding TimelineXAxis}" />
+                <StackPanel>
+                    <TextBlock Text="Динамика создания заявок"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,8" />
+                    <lvc:CartesianChart Series="{Binding TimelineSeries}" XAxes="{Binding TimelineXAxis}" />
+                </StackPanel>
             </Border>
         </Grid>
         <Border Grid.Row="2"
@@ -70,7 +80,12 @@
                 BorderThickness="1"
                 Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                 Margin="0,16,0,0">
-            <lvc:CartesianChart Series="{Binding LoadSeries}" XAxes="{Binding LoadXAxis}" />
+            <StackPanel>
+                <TextBlock Text="Нагрузка на техников"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,8" />
+                <lvc:CartesianChart Series="{Binding LoadSeries}" XAxes="{Binding LoadXAxis}" />
+            </StackPanel>
         </Border>
     </Grid>
 </Window>

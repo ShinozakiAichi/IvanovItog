@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.App.Services;
+using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Interfaces;
 
 namespace IvanovItog.App.ViewModels;
@@ -13,6 +14,8 @@ public partial class RegistrationViewModel : ObservableObject
     private readonly DialogService _dialogService;
 
     public event EventHandler<bool>? CloseRequested;
+
+    public User? RegisteredUser { get; private set; }
 
     [ObservableProperty]
     private string _login = string.Empty;
@@ -51,6 +54,8 @@ public partial class RegistrationViewModel : ObservableObject
         {
             return;
         }
+
+        RegisteredUser = null;
 
         if (string.IsNullOrWhiteSpace(Login))
         {
@@ -92,6 +97,11 @@ public partial class RegistrationViewModel : ObservableObject
                 return;
             }
 
+            if (result.Value is not null)
+            {
+                RegisteredUser = result.Value;
+            }
+
             _dialogService.ShowInfo("Аккаунт успешно создан");
             CloseRequested?.Invoke(this, true);
         }
@@ -103,6 +113,7 @@ public partial class RegistrationViewModel : ObservableObject
 
     private void Cancel()
     {
+        RegisteredUser = null;
         CloseRequested?.Invoke(this, false);
     }
 }

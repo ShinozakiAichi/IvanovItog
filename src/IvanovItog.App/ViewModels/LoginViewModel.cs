@@ -84,6 +84,11 @@ public partial class LoginViewModel : ObservableObject
         var vm = _serviceProvider.GetRequiredService<RegistrationViewModel>();
         view.DataContext = vm;
         view.Owner = Application.Current?.MainWindow;
-        view.ShowDialog();
+        var result = view.ShowDialog();
+        if (result == true && vm.RegisteredUser is not null)
+        {
+            _sessionContext.CurrentUser = vm.RegisteredUser;
+            _navigationService.Navigate<Views.RequestsView, RequestsViewModel>();
+        }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -29,6 +30,14 @@ public partial class RequestsViewModel : ObservableObject
     public ObservableCollection<Request> Requests { get; } = new();
     public ObservableCollection<Category> Categories { get; } = new();
     public ObservableCollection<Status> Statuses { get; } = new();
+    private static readonly TechnicianScopeOption[] TechnicianScopeOptions =
+    {
+        new(TechnicianScope.AvailableAndMine, "Свободные и мои"),
+        new(TechnicianScope.AvailableOnly, "Только свободные"),
+        new(TechnicianScope.MineOnly, "Только мои")
+    };
+
+    public IReadOnlyList<TechnicianScopeOption> TechnicianScopes { get; } = TechnicianScopeOptions;
 
     [ObservableProperty]
     private Request? _selectedRequest;
@@ -56,6 +65,12 @@ public partial class RequestsViewModel : ObservableObject
 
     [ObservableProperty]
     private bool _canManageUsers;
+
+    [ObservableProperty]
+    private bool _isTechnician;
+
+    [ObservableProperty]
+    private TechnicianScopeOption _selectedTechnicianScope = TechnicianScopeOptions[0];
 
     public IReadOnlyCollection<Priority> Priorities { get; private set; } = Array.Empty<Priority>();
 
@@ -151,6 +166,14 @@ public partial class RequestsViewModel : ObservableObject
 
     partial void OnSearchChanged(string? value) => ScheduleRequestsReload();
 
+    partial void OnSelectedTechnicianScopeChanged(TechnicianScopeOption value)
+    {
+        if (IsTechnician)
+        {
+            ScheduleRequestsReload();
+        }
+    }
+
     private void ScheduleRequestsReload()
     {
         if (IsBusy)
@@ -172,9 +195,11 @@ public partial class RequestsViewModel : ObservableObject
         try
         {
             IsBusy = true;
+            var currentUser = _sessionContext.CurrentUser;
+            CanManageUsers = currentUser?.Role == Role.Admin;
+            IsTechnician = currentUser?.Role == Role.Tech;
             await LoadLookupsAsync();
             await LoadRequestsAsync();
-            CanManageUsers = _sessionContext.CurrentUser?.Role == Role.Admin;
         }
         finally
         {
@@ -209,13 +234,42 @@ public partial class RequestsViewModel : ObservableObject
         {
             IsBusy = true;
             Requests.Clear();
+            var currentUser = _sessionContext.CurrentUser;
+            int? createdById = null;
+            int? assignedToId = null;
+            var includeUnassigned = false;
+
+            if (currentUser is not null)
+            {
+                if (currentUser.Role == Role.User)
+                {
+                    createdById = currentUser.Id;
+                }
+                else if (currentUser.Role == Role.Tech)
+                {
+                    var scope = SelectedTechnicianScope.Scope;
+                    includeUnassigned = scope is TechnicianScope.AvailableOnly or TechnicianScope.AvailableAndMine;
+                    if (scope is TechnicianScope.MineOnly or TechnicianScope.AvailableAndMine)
+                    {
+                        assignedToId = currentUser.Id;
+                    }
+                    else
+                    {
+                        assignedToId = null;
+                    }
+                }
+            }
+
             var filter = new RequestFilter(
                 SelectedCategoryId,
                 SelectedStatusId,
                 SelectedPriority,
                 CreatedFrom,
                 CreatedTo,
-                Search);
+                Search,
+                createdById,
+                assignedToId,
+                includeUnassigned);
 
             var requests = await _requestService.GetAsync(filter);
             foreach (var request in requests)
@@ -462,4 +516,13 @@ public partial class RequestsViewModel : ObservableObject
         view.Owner = Application.Current.MainWindow;
         view.ShowDialog();
     }
+
+    public enum TechnicianScope
+    {
+        AvailableAndMine,
+        AvailableOnly,
+        MineOnly
+    }
+
+    public sealed record TechnicianScopeOption(TechnicianScope Scope, string Title);
 }

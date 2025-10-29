@@ -18,8 +18,11 @@ public class NavigationService
         where TView : Window
         where TViewModel : notnull
     {
-        var previousWindow = _currentWindow;
-        previousWindow?.Hide();
+        var previousWindow = _currentWindow ?? Application.Current.MainWindow;
+        if (previousWindow is not null)
+        {
+            previousWindow.Hide();
+        }
         var view = _serviceProvider.GetRequiredService<TView>();
         view.DataContext = _serviceProvider.GetRequiredService<TViewModel>();
         view.Show();
