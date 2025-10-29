@@ -1,4 +1,4 @@
-using IvanovItog.Shared.Dtos;
+using IvanovItog.Domain.Dtos;
 
 namespace IvanovItog.Domain.Interfaces;
 

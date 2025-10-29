@@ -1,4 +1,4 @@
-namespace IvanovItog.Shared;
+namespace IvanovItog.Domain.Common;
 
 public class Result
 {
@@ -9,6 +9,7 @@ public class Result
     }
 
     public bool IsSuccess { get; }
+
     public string? Error { get; }
 
     public static Result Success() => new(true, null);
@@ -18,7 +19,8 @@ public class Result
 
 public sealed class Result<T> : Result
 {
-    private Result(bool isSuccess, string? error, T? value) : base(isSuccess, error)
+    private Result(bool isSuccess, string? error, T? value)
+        : base(isSuccess, error)
     {
         Value = value;
     }

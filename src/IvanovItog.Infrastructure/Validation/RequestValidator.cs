@@ -1,7 +1,7 @@
 using FluentValidation;
 using IvanovItog.Domain.Entities;
 
-namespace IvanovItog.Shared.Validation;
+namespace IvanovItog.Infrastructure.Validation;
 
 public class RequestValidator : AbstractValidator<Request>
 {

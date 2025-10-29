@@ -1,7 +1,7 @@
+using IvanovItog.Domain.Common;
+using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
-using IvanovItog.Shared;
-using IvanovItog.Shared.Dtos;
 
 namespace IvanovItog.Domain.Interfaces;
 

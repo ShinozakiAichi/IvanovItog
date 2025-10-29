@@ -3,7 +3,7 @@ using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Interfaces;
 using IvanovItog.Infrastructure.Services;
 using IvanovItog.Infrastructure.Seed;
-using IvanovItog.Shared.Validation;
+using IvanovItog.Infrastructure.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;

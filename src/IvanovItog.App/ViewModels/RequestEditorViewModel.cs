@@ -3,10 +3,10 @@ using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.App.Services;
+using IvanovItog.Domain.Common;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
 using IvanovItog.Domain.Interfaces;
-using IvanovItog.Shared;
 
 namespace IvanovItog.App.ViewModels;
 

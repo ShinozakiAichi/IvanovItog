@@ -1,5 +1,5 @@
+using IvanovItog.Domain.Common;
 using IvanovItog.Domain.Entities;
-using IvanovItog.Shared;
 
 namespace IvanovItog.Domain.Interfaces;
 
