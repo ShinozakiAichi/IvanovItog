@@ -6,3 +6,4 @@ obj/
 *.userprefs
 logs/
 appsettings.user.json
+*.vsidx
