@@ -45,7 +45,7 @@ public partial class RatingViewModel : ObservableObject
 
             var medals = new[] { "🥇", "🥈", "🥉" };
             var top = ratings.Take(3).ToList();
-            for (var i = 0; i < top.Count; i++)
+            for (var i = 0; i < top.Count(); i++)
             {
                 TopThreeMedals.Add(new MedalEntry(medals[i], top[i]));
             }
