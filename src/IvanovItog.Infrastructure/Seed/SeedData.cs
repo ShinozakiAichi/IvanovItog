@@ -1,5 +1,4 @@
 using System.Linq;
-using BCrypt.Net;
 using IvanovItog.Domain.Entities;
 using IvanovItog.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
@@ -18,50 +17,39 @@ public static class SeedData
     private static readonly string[] DefaultCategories = { "ПО", "Оборудование", "Сеть", "Прочее" };
     private static readonly string[] DefaultStatuses = { "Новая", "В работе", "Закрыта", "Отменена" };
 
-    public static async Task InitializeAsync(AppDbContext context, CancellationToken cancellationToken = default)
+    public static async Task InitializeAsync(AppDbContext context, CancellationToken ct = default)
     {
-        var migrations = context.Database.GetMigrations();
-
-        if (migrations.Any())
+        try
         {
-            await context.Database.MigrateAsync(cancellationToken);
+            await context.Database.MigrateAsync(ct);
         }
-        else
+        catch
         {
-            await context.Database.EnsureCreatedAsync(cancellationToken);
+            await context.Database.EnsureCreatedAsync(ct);
         }
 
-        if (!await context.Categories.AnyAsync(cancellationToken))
+        if (!await context.Categories.AnyAsync(ct))
         {
-            foreach (var category in DefaultCategories)
+            context.Categories.AddRange(DefaultCategories.Select(n => new Category { Name = n }));
+        }
+
+        if (!await context.Statuses.AnyAsync(ct))
+        {
+            context.Statuses.AddRange(DefaultStatuses.Select(n => new Status { Name = n }));
+        }
+
+        if (!await context.Users.AnyAsync(ct))
+        {
+            context.Users.AddRange(DefaultUsers.Select(u => new User
             {
-                context.Categories.Add(new Category { Name = category });
-            }
+                Login = u.Name,
+                DisplayName = u.Name,
+                Role = u.Role,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
+                CreatedAt = DateTime.UtcNow
+            }));
         }
 
-        if (!await context.Statuses.AnyAsync(cancellationToken))
-        {
-            foreach (var status in DefaultStatuses)
-            {
-                context.Statuses.Add(new Status { Name = status });
-            }
-        }
-
-        if (!await context.Users.AnyAsync(cancellationToken))
-        {
-            foreach (var user in DefaultUsers)
-            {
-                context.Users.Add(new User
-                {
-                    Login = user.Name,
-                    DisplayName = user.Name,
-                    Role = user.Role,
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("123456"),
-                    CreatedAt = DateTime.UtcNow
-                });
-            }
-        }
-
-        await context.SaveChangesAsync(cancellationToken);
+        await context.SaveChangesAsync(ct);
     }
 }
