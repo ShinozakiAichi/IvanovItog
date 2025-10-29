@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IvanovItog.Domain.Interfaces;
@@ -57,7 +58,7 @@ public partial class AnalyticsViewModel : ObservableObject
 
         try
         {
-            ClearSeries();
+            Application.Current.Dispatcher.Invoke(ClearSeries);
             await LogAsync("Очищены предыдущие данные графиков.");
 
             var (fromLocal, toLocal, normalizedFrom, normalizedTo) = NormalizeRange(From, To);
@@ -114,80 +115,92 @@ public partial class AnalyticsViewModel : ObservableObject
 
             await LogAsync($"Получено точек хронологии: {timelinePoints.Count}.");
 
-            if (timelinePoints.Any())
-            {
-                TimelineSeries.Add(new LineSeries<int>
-                {
-                    Values = timelinePoints.Select(p => p.Count).ToArray(),
-                    GeometrySize = 8,
-                    Fill = null
-                });
-
-                TimelineXAxis = new Axis[]
-                {
-                    new Axis
-                    {
-                        Labels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList(),
-                        LabelsRotation = 15
-                    }
-                };
-            }
-            else
-            {
-                TimelineXAxis = Array.Empty<Axis>();
-            }
-
-            OnPropertyChanged(nameof(TimelineXAxis));
-
             var statusData = (await _analyticsService.GetRequestsByStatusAsync(fromLocal, toLocal)).ToList();
             await LogAsync($"Получено статусов: {statusData.Count}.");
-
-            foreach (var status in statusData)
-            {
-                StatusSeries.Add(new PieSeries<int>
-                {
-                    Values = new int[] { status.Count },
-                    Name = status.Status,
-                    DataLabelsPaint = new SolidColorPaint(SKColors.Black),
-                    DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer
-                });
-            }
 
             var loads = (await _analyticsService.GetTechnicianLoadAsync(fromLocal, toLocal)).ToList();
             await LogAsync($"Получено данных по нагрузке: {loads.Count}.");
 
-            if (loads.Any())
-            {
-                LoadSeries.Add(new ColumnSeries<int>
-                {
-                    Values = loads.Select(l => l.ActiveRequests).ToArray(),
-                    Name = "Активные"
-                });
+            var timelineValues = timelinePoints.Select(p => p.Count).ToArray();
+            var timelineLabels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList();
 
-                if (loads.Any(l => l.ClosedRequests > 0))
+            var loadActiveValues = loads.Select(l => l.ActiveRequests).ToArray();
+            var loadClosedValues = loads.Select(l => l.ClosedRequests).ToArray();
+            var loadLabels = loads.Select(l => l.TechnicianName).ToList();
+            var hasLoads = loads.Any();
+            var hasClosedRequests = loads.Any(l => l.ClosedRequests > 0);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (timelinePoints.Any())
                 {
-                    LoadSeries.Add(new ColumnSeries<int>
+                    TimelineSeries.Add(new LineSeries<int>
                     {
-                        Values = loads.Select(l => l.ClosedRequests).ToArray(),
-                        Name = "Завершённые"
+                        Values = timelineValues,
+                        GeometrySize = 8,
+                        Fill = null
+                    });
+
+                    TimelineXAxis = new Axis[]
+                    {
+                        new Axis
+                        {
+                            Labels = timelineLabels,
+                            LabelsRotation = 15
+                        }
+                    };
+                }
+                else
+                {
+                    TimelineXAxis = Array.Empty<Axis>();
+                }
+
+                OnPropertyChanged(nameof(TimelineXAxis));
+
+                foreach (var status in statusData)
+                {
+                    StatusSeries.Add(new PieSeries<int>
+                    {
+                        Values = new[] { status.Count },
+                        Name = status.Status,
+                        DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+                        DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer
                     });
                 }
 
-                LoadXAxis = new Axis[]
+                if (hasLoads)
                 {
-                    new Axis
+                    LoadSeries.Add(new ColumnSeries<int>
                     {
-                        Labels = loads.Select(l => l.TechnicianName).ToList(),
-                        LabelsRotation = 15
-                    }
-                };
-            }
-            else
-            {
-                LoadXAxis = Array.Empty<Axis>();
-            }
+                        Values = loadActiveValues,
+                        Name = "Активные"
+                    });
 
-            OnPropertyChanged(nameof(LoadXAxis));
+                    if (hasClosedRequests)
+                    {
+                        LoadSeries.Add(new ColumnSeries<int>
+                        {
+                            Values = loadClosedValues,
+                            Name = "Завершённые"
+                        });
+                    }
+
+                    LoadXAxis = new Axis[]
+                    {
+                        new Axis
+                        {
+                            Labels = loadLabels,
+                            LabelsRotation = 15
+                        }
+                    };
+                }
+                else
+                {
+                    LoadXAxis = Array.Empty<Axis>();
+                }
+
+                OnPropertyChanged(nameof(LoadXAxis));
+            });
         }
         catch (Exception ex)
         {
