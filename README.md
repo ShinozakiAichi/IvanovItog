@@ -9,7 +9,8 @@ IvanovItog.sln
 ├─ src/
 │  ├─ IvanovItog.App/            # WPF UI, MVVM, LiveCharts, Serilog
 │  ├─ IvanovItog.Domain/         # Доменные сущности, перечисления, интерфейсы, DTO, Result
-│  └─ IvanovItog.Infrastructure/ # EF Core + сервисы, сиды, DI, валидаторы
+│  ├─ IvanovItog.Infrastructure/ # EF Core + сервисы, сиды, DI, валидаторы
+│  └─ IvanovItog.Shared/         # Общие DTO и контракты обмена между слоями
 └─ tests/
    └─ IvanovItog.Tests/          # xUnit-тесты инфраструктурной логики
 ```

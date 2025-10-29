@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Domain", "src\Iv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Infrastructure", "src\IvanovItog.Infrastructure\IvanovItog.Infrastructure.csproj", "{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Shared", "src\IvanovItog.Shared\IvanovItog.Shared.csproj", "{85F03DCF-0226-4AB4-A8AA-597194AFE7BE}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Tests", "tests\IvanovItog.Tests\IvanovItog.Tests.csproj", "{3789D5A9-D26B-4693-B4C8-62A9DF7E11D3}"
 EndProject
 Global
@@ -32,6 +34,10 @@ Global
         {3789D5A9-D26B-4693-B4C8-62A9DF7E11D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
         {3789D5A9-D26B-4693-B4C8-62A9DF7E11D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
         {3789D5A9-D26B-4693-B4C8-62A9DF7E11D3}.Release|Any CPU.Build.0 = Release|Any CPU
+        {85F03DCF-0226-4AB4-A8AA-597194AFE7BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {85F03DCF-0226-4AB4-A8AA-597194AFE7BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {85F03DCF-0226-4AB4-A8AA-597194AFE7BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {85F03DCF-0226-4AB4-A8AA-597194AFE7BE}.Release|Any CPU.Build.0 = Release|Any CPU
     EndGlobalSection
     GlobalSection(SolutionProperties) = preSolution
         HideSolutionNode = FALSE

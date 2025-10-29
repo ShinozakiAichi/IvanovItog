@@ -3,8 +3,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using IvanovItog.Domain.Dtos;
 using IvanovItog.Domain.Interfaces;
+using IvanovItog.Shared.Dtos;
 using LiveChartsCore;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
@@ -56,12 +56,12 @@ public partial class AnalyticsViewModel : ObservableObject
             LoadSeries.Clear();
 
             var statusData = await _analyticsService.GetRequestsByStatusAsync();
-            foreach (var kv in statusData.Counts)
+            foreach (var status in statusData)
             {
                 StatusSeries.Add(new PieSeries<int>
                 {
-                    Values = new[] { kv.Value },
-                    Name = kv.Key,
+                    Values = new[] { status.Count },
+                    Name = status.Status,
                     DataLabelsPaint = new SolidColorPaint(SKColors.Black),
                     DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer
                 });
@@ -70,7 +70,7 @@ public partial class AnalyticsViewModel : ObservableObject
             var timelinePoints = (await _analyticsService.GetRequestsTimelineAsync(From, To)).OrderBy(p => p.Date).ToList();
             TimelineSeries.Add(new LineSeries<int>
             {
-                Values = timelinePoints.Select(p => p.RequestsCount).ToArray(),
+                Values = timelinePoints.Select(p => p.Count).ToArray(),
                 GeometrySize = 8,
                 Fill = null
             });

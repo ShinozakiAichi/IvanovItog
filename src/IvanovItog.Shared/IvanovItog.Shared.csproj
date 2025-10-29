@@ -4,7 +4,4 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IvanovItog.Shared\IvanovItog.Shared.csproj" />
-  </ItemGroup>
 </Project>

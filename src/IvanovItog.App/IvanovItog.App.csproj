@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IvanovItog.Domain\IvanovItog.Domain.csproj" />
     <ProjectReference Include="..\IvanovItog.Infrastructure\IvanovItog.Infrastructure.csproj" />
+    <ProjectReference Include="..\IvanovItog.Shared\IvanovItog.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">
