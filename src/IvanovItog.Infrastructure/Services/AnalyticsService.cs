@@ -47,34 +47,33 @@ public class AnalyticsService : IAnalyticsService
         return statuses;
     }
 
-    public async Task<IReadOnlyCollection<RequestsTimelinePointDto>> GetRequestsTimelineAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+    public async Task<IReadOnlyCollection<RequestsTimelinePointDto>> GetRequestsTimelineAsync(
+    DateTime from,
+    DateTime to,
+    CancellationToken cancellationToken = default)
     {
         NormalizeRange(ref from, ref to);
 
-        var timelineAggregates = await _dbContext.Requests
+        var grouped = await _dbContext.Requests
             .AsNoTracking()
             .Where(r => r.CreatedAt >= from && r.CreatedAt <= to)
-            .GroupBy(r => new { r.CreatedAt.Year, r.CreatedAt.Month, r.CreatedAt.Day })
-            .Select(g => new
-            {
-                g.Key.Year,
-                g.Key.Month,
-                g.Key.Day,
-                Count = g.Count()
-            })
-            .OrderBy(x => x.Year)
-            .ThenBy(x => x.Month)
-            .ThenBy(x => x.Day)
-            .ToListAsync(cancellationToken);
+            .GroupBy(r => r.CreatedAt.Date)
+            .Select(g => new { Date = g.Key, Count = g.Count() })
+            .ToDictionaryAsync(x => x.Date, x => x.Count, cancellationToken);
 
-        return timelineAggregates
-            .Select(x => new RequestsTimelinePointDto
+        var result = new List<RequestsTimelinePointDto>();
+        for (var day = from.Date; day <= to.Date; day = day.AddDays(1))
+        {
+            result.Add(new RequestsTimelinePointDto
             {
-                Date = DateTime.SpecifyKind(new DateTime(x.Year, x.Month, x.Day), DateTimeKind.Utc),
-                Count = x.Count
-            })
-            .ToList();
+                Date = day,
+                Count = grouped.TryGetValue(day, out var count) ? count : 0
+            });
+        }
+
+        return result;
     }
+
 
     public async Task<IReadOnlyCollection<TechnicianLoadDto>> GetTechnicianLoadAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
     {

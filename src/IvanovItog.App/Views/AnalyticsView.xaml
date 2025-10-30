@@ -10,27 +10,32 @@
         MaxHeight="900"
         MaxWidth="1600"
         WindowStartupLocation="CenterScreen">
+
     <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="1.2*" />
         </Grid.RowDefinitions>
+
+        <!-- Панель фильтра -->
         <Border Padding="16"
                 CornerRadius="8"
                 BorderBrush="#FFD0D7E2"
                 BorderThickness="1"
                 Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                 Margin="0,0,0,16">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <StackPanel Width="180" Margin="0,0,12,0">
                     <TextBlock Text="Дата с" />
                     <DatePicker Margin="0,6,0,0" SelectedDate="{Binding From}" />
                 </StackPanel>
+
                 <StackPanel Width="180" Margin="0,0,12,0">
                     <TextBlock Text="Дата по" />
                     <DatePicker Margin="0,6,0,0" SelectedDate="{Binding To}" />
                 </StackPanel>
+
                 <Button Content="Обновить"
                         Width="140"
                         Margin="0,22,0,0"
@@ -38,24 +43,42 @@
                         Command="{Binding LoadCommand}" />
             </StackPanel>
         </Border>
+
+        <!-- Верхняя строка графиков -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+            <!-- Распределение по статусам -->
             <Border Padding="12"
                     CornerRadius="8"
                     BorderBrush="#FFE0E6F0"
                     BorderThickness="1"
                     Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                     Margin="0,0,8,0">
-                <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
                     <TextBlock Text="Распределение по статусам"
                                FontWeight="SemiBold"
                                Margin="0,0,0,8" />
-                    <lvc:PieChart Series="{Binding StatusSeries}" LegendPosition="Right" />
-                </StackPanel>
+
+                    <lvc:PieChart Grid.Row="1"
+                                  Series="{Binding StatusSeries}"
+                                  LegendPosition="Right"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch"
+                                  Height="190"
+                                  Margin="0,4,0,0" />
+                </Grid>
             </Border>
+
+            <!-- Динамика создания заявок -->
             <Border Grid.Column="1"
                     Padding="12"
                     CornerRadius="8"
@@ -63,14 +86,28 @@
                     BorderThickness="1"
                     Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                     Margin="8,0,0,0">
-                <StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
                     <TextBlock Text="Динамика создания заявок"
                                FontWeight="SemiBold"
                                Margin="0,0,0,8" />
-                    <lvc:CartesianChart Series="{Binding TimelineSeries}" XAxes="{Binding TimelineXAxis}" />
-                </StackPanel>
+
+                    <lvc:CartesianChart Grid.Row="1"
+                                        Series="{Binding TimelineSeries}"
+                                        XAxes="{Binding TimelineXAxis}"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalAlignment="Stretch"
+                                        Height="190"
+                                        Margin="0,4,0,0" />
+                </Grid>
             </Border>
         </Grid>
+
+        <!-- Нагрузка на техников -->
         <Border Grid.Row="2"
                 Padding="12"
                 CornerRadius="8"
@@ -78,12 +115,24 @@
                 BorderThickness="1"
                 Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                 Margin="0,16,0,0">
-            <StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
                 <TextBlock Text="Нагрузка на техников"
                            FontWeight="SemiBold"
                            Margin="0,0,0,8" />
-                <lvc:CartesianChart Series="{Binding LoadSeries}" XAxes="{Binding LoadXAxis}" />
-            </StackPanel>
+
+                <lvc:CartesianChart Grid.Row="1"
+                                    Series="{Binding LoadSeries}"
+                                    XAxes="{Binding LoadXAxis}"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"
+                                    Height="210"
+                                    Margin="0,4,0,0" />
+            </Grid>
         </Border>
     </Grid>
 </Window>

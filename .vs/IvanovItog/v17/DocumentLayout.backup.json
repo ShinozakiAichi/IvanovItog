@@ -3,12 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\allen\\source\\repos\\IvanovItog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|solutionrelative:src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\services\\traynotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\services\\traynotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\ratingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\ratingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\requestsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\requestsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\usereditorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\usereditorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\usermanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\usermanagementviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\requesteditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\requesteditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\ratingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -17,14 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\usereditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\usereditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\requesteditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\requesteditorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -62,10 +94,6 @@
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\helpers\\csvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\services\\traynotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\services\\traynotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -77,7 +105,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,51 +113,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserEditorView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\UserEditorView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\UserEditorView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\UserEditorView.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\UserEditorView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T11:41:09.188Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LoginView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\LoginView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\LoginView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\LoginView.xaml*",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\LoginView.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:24.834Z",
+              "Title": "AnalyticsService.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs*",
+              "RelativeToolTip": "src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs*",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T05:51:48.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RequestEditorView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:40.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RatingView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RatingView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RatingView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RatingView.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RatingView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:28.25Z",
-              "EditorCaption": ""
+              "DocumentIndex": 6,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T13:59:31.001Z"
             },
             {
               "$type": "Document",
@@ -139,26 +144,14 @@
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAADwv1sAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAYwCgAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T09:02:13.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\Source\\Repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\App.xaml",
-              "ToolTip": "C:\\Users\\allen\\Source\\Repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:42:20.775Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "AnalyticsView.xaml",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\AnalyticsView.xaml",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\AnalyticsView.xaml",
@@ -171,120 +164,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Microsoft.NET.Sdk.DefaultItems.targets",
-              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
-              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAjwJMAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-10-29T08:37:31.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SettingsView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\SettingsView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\SettingsView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\SettingsView.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\SettingsView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:12.409Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "RequestsView.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestsView.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RequestsView.xaml",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestsView.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestsView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:54:56.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\appsettings.json",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\appsettings.json",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\appsettings.json",
-              "RelativeToolTip": "src\\IvanovItog.App\\appsettings.json",
+              "Title": "RequestsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\RequestsViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\RequestsViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\RequestsViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\RequestsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-29T08:54:17.161Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Light.xaml",
-              "DocumentMoniker": "C:\\Users\\allen\\Source\\Repos\\IvanovItog\\src\\IvanovItog.App\\Resources\\Light.xaml",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Resources\\Light.xaml",
-              "ToolTip": "C:\\Users\\allen\\Source\\Repos\\IvanovItog\\src\\IvanovItog.App\\Resources\\Light.xaml",
-              "RelativeToolTip": "src\\IvanovItog.App\\Resources\\Light.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:54:28.386Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DialogService.cs",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\DialogService.cs",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Services\\DialogService.cs",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\DialogService.cs",
-              "RelativeToolTip": "src\\IvanovItog.App\\Services\\DialogService.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:42:24.522Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-29T14:00:06.711Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "CsvExporter.cs",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
-              "RelativeToolTip": "src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:42:22.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Resources.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
-              "RelativeToolTip": "src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:37:32.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml.cs",
-              "RelativeDocumentMoniker": "src\\IvanovItog.App\\App.xaml.cs",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml.cs",
-              "RelativeToolTip": "src\\IvanovItog.App\\App.xaml.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAA8AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:27:49.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 3,
               "Title": "TrayNotificationService.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\TrayNotificationService.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\Services\\TrayNotificationService.cs",
@@ -294,6 +185,216 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T08:37:14.968Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RatingViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T13:59:39.248Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T14:00:04.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserEditorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\UserEditorViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\UserEditorViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\UserEditorViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\UserEditorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T14:00:00.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserManagementViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\UserManagementViewModel.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\UserManagementViewModel.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\UserManagementViewModel.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\UserManagementViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T13:59:57.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RatingView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RatingView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RatingView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RatingView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RatingView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:53:28.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RequestEditorView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:53:40.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\App.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:42:20.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\LoginView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\LoginView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:53:24.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserEditorView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\UserEditorView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\UserEditorView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\UserEditorView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\UserEditorView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T11:41:09.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Microsoft.NET.Sdk.DefaultItems.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.102\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.targets",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAjwJMAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-10-29T08:37:31.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SettingsView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\SettingsView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\SettingsView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\SettingsView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\SettingsView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:53:12.409Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RequestsView.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestsView.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\RequestsView.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestsView.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestsView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:54:56.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\appsettings.json",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\appsettings.json",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\appsettings.json",
+              "RelativeToolTip": "src\\IvanovItog.App\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-29T08:54:17.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Light.xaml",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Resources\\Light.xaml",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Resources\\Light.xaml",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Resources\\Light.xaml",
+              "RelativeToolTip": "src\\IvanovItog.App\\Resources\\Light.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-29T08:54:28.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DialogService.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\DialogService.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Services\\DialogService.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\DialogService.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\Services\\DialogService.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwAwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:42:24.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CsvExporter.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:42:22.856Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Resources.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:37:32.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml.cs",
+              "RelativeDocumentMoniker": "src\\IvanovItog.App\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\App.xaml.cs",
+              "RelativeToolTip": "src\\IvanovItog.App\\App.xaml.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAA8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T08:27:49.219Z"
             }
           ]
         }
