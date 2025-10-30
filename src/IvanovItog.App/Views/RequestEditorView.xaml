@@ -8,8 +8,6 @@
         Width="560"
         MinHeight="420"
         MinWidth="520"
-        MaxHeight="620"
-        MaxWidth="720"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="24">
         <Grid.RowDefinitions>

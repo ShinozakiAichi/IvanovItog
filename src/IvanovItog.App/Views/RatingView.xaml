@@ -7,8 +7,6 @@
         Width="820"
         MinHeight="520"
         MinWidth="720"
-        MaxHeight="800"
-        MaxWidth="1200"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="16">

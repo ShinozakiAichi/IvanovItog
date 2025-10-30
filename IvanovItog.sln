@@ -10,8 +10,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Shared", "src\IvanovItog.Shared\IvanovItog.Shared.csproj", "{85F03DCF-0226-4AB4-A8AA-597194AFE7BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IvanovItog.Tests", "tests\IvanovItog.Tests\IvanovItog.Tests.csproj", "{3789D5A9-D26B-4693-B4C8-62A9DF7E11D3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

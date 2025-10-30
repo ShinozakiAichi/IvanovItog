@@ -7,8 +7,6 @@
         Width="1040"
         MinHeight="620"
         MinWidth="960"
-        MaxHeight="900"
-        MaxWidth="1600"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="16">
