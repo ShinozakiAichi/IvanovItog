@@ -12,7 +12,7 @@ IvanovItog.sln
 │  ├─ IvanovItog.Infrastructure/ # EF Core + сервисы, сиды, DI, валидаторы
 │  └─ IvanovItog.Shared/         # Общие DTO и контракты обмена между слоями
 └─ tests/
-   └─ IvanovItog.Tests/          # xUnit-тесты инфраструктурной логики
+   └─ IvanovItog.Infrastructure.Tests/ # xUnit-тесты инфраструктурной логики
 ```
 
 ## Возможности
