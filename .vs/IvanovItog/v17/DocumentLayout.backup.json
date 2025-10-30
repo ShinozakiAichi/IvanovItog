@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\allen\\source\\repos\\IvanovItog\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|solutionrelative:src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\analyticsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\views\\analyticsview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E869A3E-E5B1-4EB3-A17E-FF675ADB439E}|src\\IvanovItog.Infrastructure\\IvanovItog.Infrastructure.csproj|solutionrelative:src\\ivanovitog.infrastructure\\services\\analyticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\services\\traynotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\ratingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\ratingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|solutionrelative:src\\ivanovitog.app\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AA1CCDB1-E546-403B-B3DD-012EFA360BAC}|src\\IvanovItog.App\\IvanovItog.App.csproj|c:\\users\\allen\\source\\repos\\ivanovitog\\src\\ivanovitog.app\\viewmodels\\requestsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -105,28 +105,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AnalyticsService.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
-              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs*",
-              "RelativeToolTip": "src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs*",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
+              "RelativeToolTip": "src\\IvanovItog.Infrastructure\\Services\\AnalyticsService.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAwwEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T05:51:48.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
@@ -134,24 +138,25 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T13:59:31.001Z"
+              "WhenOpened": "2025-10-29T13:59:31.001Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AnalyticsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\AnalyticsViewModel.cs",
-              "ViewState": "AgIAAL8AAAAAAAAAAAAYwCgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAAOgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-29T09:02:13.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AnalyticsView.xaml",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\AnalyticsView.xaml",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\Views\\AnalyticsView.xaml",
@@ -171,11 +176,12 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\RequestsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T14:00:06.711Z"
+              "WhenOpened": "2025-10-29T14:00:06.711Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TrayNotificationService.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Services\\TrayNotificationService.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\Services\\TrayNotificationService.cs",
@@ -188,7 +194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "RatingViewModel.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
@@ -196,11 +202,12 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\RatingViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T13:59:39.248Z"
+              "WhenOpened": "2025-10-29T13:59:39.248Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SettingsViewModel.cs",
               "DocumentMoniker": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
               "RelativeDocumentMoniker": "src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
@@ -208,7 +215,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\SettingsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T14:00:04.844Z"
+              "WhenOpened": "2025-10-29T14:00:04.844Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -220,7 +228,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\UserEditorViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T14:00:00.402Z"
+              "WhenOpened": "2025-10-29T14:00:00.402Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -232,7 +241,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\ViewModels\\UserManagementViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T13:59:57.642Z"
+              "WhenOpened": "2025-10-29T13:59:57.642Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -243,7 +253,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RatingView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\RatingView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:28.25Z"
+              "WhenOpened": "2025-10-29T08:53:28.25Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -254,7 +265,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestEditorView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:40.574Z"
+              "WhenOpened": "2025-10-29T08:53:40.574Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -277,7 +289,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\LoginView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:24.834Z"
+              "WhenOpened": "2025-10-29T08:53:24.834Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -288,7 +301,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\UserEditorView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\UserEditorView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T11:41:09.188Z"
+              "WhenOpened": "2025-10-29T11:41:09.188Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -311,7 +325,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\SettingsView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\SettingsView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:53:12.409Z"
+              "WhenOpened": "2025-10-29T08:53:12.409Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -322,7 +337,8 @@
               "ToolTip": "C:\\Users\\allen\\source\\repos\\IvanovItog\\src\\IvanovItog.App\\Views\\RequestsView.xaml",
               "RelativeToolTip": "src\\IvanovItog.App\\Views\\RequestsView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-10-29T08:54:56.356Z"
+              "WhenOpened": "2025-10-29T08:54:56.356Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -334,7 +350,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-29T08:54:17.161Z"
+              "WhenOpened": "2025-10-29T08:54:17.161Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -358,7 +375,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\Services\\DialogService.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAqwAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:42:24.522Z"
+              "WhenOpened": "2025-10-29T08:42:24.522Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -370,7 +388,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\Helpers\\CsvExporter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:42:22.856Z"
+              "WhenOpened": "2025-10-29T08:42:22.856Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -382,7 +401,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\Properties\\Resources.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:37:32.971Z"
+              "WhenOpened": "2025-10-29T08:37:32.971Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -394,7 +414,8 @@
               "RelativeToolTip": "src\\IvanovItog.App\\App.xaml.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAAA8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T08:27:49.219Z"
+              "WhenOpened": "2025-10-29T08:27:49.219Z",
+              "EditorCaption": ""
             }
           ]
         }

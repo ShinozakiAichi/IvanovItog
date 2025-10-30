@@ -73,7 +73,7 @@
                                   LegendPosition="Right"
                                   VerticalAlignment="Stretch"
                                   HorizontalAlignment="Stretch"
-                                  Height="190"
+                                  Height="160"
                                   Margin="0,4,0,0" />
                 </Grid>
             </Border>
