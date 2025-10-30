@@ -1,14 +1,10 @@
 <Window x:Class="IvanovItog.App.Views.AnalyticsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:helpers="clr-namespace:IvanovItog.App.Helpers"
         xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
         Title="Аналитика"
-        Height="640"
-        Width="1040"
-        MinHeight="620"
-        MinWidth="960"
-        MaxHeight="900"
-        MaxWidth="1600"
+        helpers:WindowSizeHelper.BindMinimumToContent="True"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="16">
