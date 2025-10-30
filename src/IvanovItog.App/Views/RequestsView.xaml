@@ -1,10 +1,14 @@
 <Window x:Class="IvanovItog.App.Views.RequestsView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:helpers="clr-namespace:IvanovItog.App.Helpers"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.Requests_Title}"
-        helpers:WindowSizeHelper.BindMinimumToContent="True"
+        Height="640"
+        Width="1040"
+        MinHeight="600"
+        MinWidth="960"
+        MaxHeight="900"
+        MaxWidth="1600"
         Loaded="OnLoaded"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
