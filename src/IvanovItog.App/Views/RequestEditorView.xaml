@@ -4,7 +4,12 @@
         xmlns:helpers="clr-namespace:IvanovItog.App.Helpers"
         xmlns:props="clr-namespace:IvanovItog.App.Properties"
         Title="{x:Static props:Resources.RequestEditor_Title}"
-        helpers:WindowSizeHelper.BindMinimumToContent="True"
+        Height="460"
+        Width="560"
+        MinHeight="420"
+        MinWidth="520"
+        MaxHeight="620"
+        MaxWidth="720"
         WindowStartupLocation="CenterScreen">
     <Grid Margin="24">
         <Grid.RowDefinitions>
