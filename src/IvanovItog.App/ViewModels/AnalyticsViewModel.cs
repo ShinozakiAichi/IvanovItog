@@ -36,9 +36,10 @@ public partial class AnalyticsViewModel : ObservableObject
 
     public IAsyncRelayCommand LoadCommand { get; }
 
-    public AnalyticsViewModel(IAnalyticsService analyticsService)
+    public AnalyticsViewModel(IAnalyticsService analyticsService, Dispatcher dispatcher)
     {
         _analyticsService = analyticsService;
+        _dispatcher = dispatcher ?? throw new ArgumentNullException(nameof(dispatcher));
         LoadCommand = new AsyncRelayCommand(LoadAsync, () => !IsBusy);
 
         // лог старта
@@ -49,6 +50,8 @@ public partial class AnalyticsViewModel : ObservableObject
     {
         if (IsBusy)
             return;
+
+        await LogAsync($"Начало загрузки аналитики. Файл логов: {_logFilePath}");
 
         try
         {
@@ -85,7 +88,29 @@ public partial class AnalyticsViewModel : ObservableObject
                     timelinePoints = fallbackTimeline;
                     Log($"Переназначили диапазон: {From:dd.MM.yyyy} — {To:dd.MM.yyyy}");
                 }
+
+                if (!timelinePoints.Any())
+                {
+                    await LogAsync("Данные хронологии отсутствуют даже после запасного запроса.");
+                }
             }
+
+            await LogAsync($"Получено точек хронологии: {timelinePoints.Count}.");
+
+            var statusData = (await _analyticsService.GetRequestsByStatusAsync(fromLocal, toLocal)).ToList();
+            await LogAsync($"Получено статусов: {statusData.Count}.");
+
+            var loads = (await _analyticsService.GetTechnicianLoadAsync(fromLocal, toLocal)).ToList();
+            await LogAsync($"Получено данных по нагрузке: {loads.Count}.");
+
+            var timelineValues = timelinePoints.Select(p => p.Count).ToArray();
+            var timelineLabels = timelinePoints.Select(p => p.Date.ToString("dd.MM")).ToList();
+
+            var loadActiveValues = loads.Select(l => l.ActiveRequests).ToArray();
+            var loadClosedValues = loads.Select(l => l.ClosedRequests).ToArray();
+            var loadLabels = loads.Select(l => l.TechnicianName).ToList();
+            var hasLoads = loads.Any();
+            var hasClosedRequests = loads.Any(l => l.ClosedRequests > 0);
 
             if (timelinePoints.Any())
             {
@@ -110,7 +135,7 @@ public partial class AnalyticsViewModel : ObservableObject
                 Log("TimelineSeries успешно заполнен.");
             }
 
-            OnPropertyChanged(nameof(TimelineXAxis));
+                OnPropertyChanged(nameof(TimelineXAxis));
 
             // --- Status ---
             var statusData = (await _analyticsService.GetRequestsByStatusAsync(fromLocal, toLocal)).ToList();
@@ -140,14 +165,14 @@ public partial class AnalyticsViewModel : ObservableObject
                     Name = "Активные"
                 });
 
-                if (loads.Any(l => l.ClosedRequests > 0))
-                {
-                    LoadSeries.Add(new ColumnSeries<int>
+                    if (hasClosedRequests)
                     {
-                        Values = loads.Select(l => l.ClosedRequests).ToArray(),
-                        Name = "Завершённые"
-                    });
-                }
+                        LoadSeries.Add(new ColumnSeries<int>
+                        {
+                            Values = loadClosedValues,
+                            Name = "Завершённые"
+                        });
+                    }
 
                 LoadXAxis = new Axis[]
                 {
@@ -171,7 +196,8 @@ public partial class AnalyticsViewModel : ObservableObject
         }
         finally
         {
-            IsBusy = false;
+            await _dispatcher.InvokeAsync(() => IsBusy = false);
+            await LogAsync("Загрузка аналитики завершена.");
         }
     }
 
@@ -193,6 +219,29 @@ public partial class AnalyticsViewModel : ObservableObject
         LoadXAxis = Array.Empty<Axis>();
         OnPropertyChanged(nameof(TimelineXAxis));
         OnPropertyChanged(nameof(LoadXAxis));
+    }
+
+    private Task LogAsync(string message) => WriteLogEntryAsync(message);
+
+    private Task LogErrorAsync(string message, Exception exception)
+    {
+        var details = $"{message}: {exception.GetType().FullName}: {exception.Message}{Environment.NewLine}{exception.StackTrace}";
+        return WriteLogEntryAsync(details);
+    }
+
+    private async Task WriteLogEntryAsync(string message)
+    {
+        var line = $"[{DateTime.Now:O}] {message}{Environment.NewLine}";
+
+        await LogSemaphore.WaitAsync();
+        try
+        {
+            await File.AppendAllTextAsync(_logFilePath, line);
+        }
+        finally
+        {
+            LogSemaphore.Release();
+        }
     }
 
     private static (DateTime fromLocal, DateTime toLocal, DateTime normalizedFrom, DateTime normalizedTo) NormalizeRange(DateTime from, DateTime to)

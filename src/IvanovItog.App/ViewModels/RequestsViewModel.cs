@@ -490,7 +490,6 @@ public partial class RequestsViewModel : ObservableObject
     private void OpenAnalytics()
     {
         var view = _serviceProvider.GetRequiredService<AnalyticsView>();
-        view.DataContext = _serviceProvider.GetRequiredService<AnalyticsViewModel>();
         view.Owner = Application.Current.MainWindow;
         view.ShowDialog();
     }

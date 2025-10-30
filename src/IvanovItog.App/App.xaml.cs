@@ -1,9 +1,11 @@
 using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Threading;
 using IvanovItog.App.Services;
 using IvanovItog.App.ViewModels;
 using IvanovItog.App.Views;
+using IvanovItog.Domain.Interfaces;
 using IvanovItog.Infrastructure;
 using Microsoft.Data.Sqlite;
 using Microsoft.Extensions.Configuration;
@@ -37,6 +39,13 @@ public partial class App : System.Windows.Application
                 var connectionString = BuildSqliteConnectionString(context.Configuration.GetConnectionString("Default"));
                 services.AddInfrastructure(connectionString, Log.Logger);
 
+                var databasePath = new SqliteConnectionStringBuilder(connectionString).DataSource;
+                if (!File.Exists(databasePath))
+                {
+                    services.AddSingleton<IAnalyticsService, FakeAnalyticsService>();
+                    Log.Information("Database not found at {DatabasePath}. Using FakeAnalyticsService for analytics data.", databasePath);
+                }
+
                 services.AddSingleton<NavigationService>();
                 services.AddSingleton<DialogService>();
                 services.AddSingleton<SessionContext>();
@@ -46,7 +55,12 @@ public partial class App : System.Windows.Application
                 services.AddTransient<LoginViewModel>();
                 services.AddTransient<RequestsViewModel>();
                 services.AddTransient<RatingViewModel>();
-                services.AddTransient<AnalyticsViewModel>();
+                var dispatcher = Dispatcher.CurrentDispatcher;
+
+                services.AddTransient<AnalyticsViewModel>(sp =>
+                    new AnalyticsViewModel(
+                        sp.GetRequiredService<IAnalyticsService>(),
+                        dispatcher));
                 services.AddTransient<SettingsViewModel>();
                 services.AddTransient<RequestEditorViewModel>();
                 services.AddTransient<RegistrationViewModel>();
